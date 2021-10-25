@@ -1,0 +1,206 @@
+---
+title: "R tidyverse básico aplicado à analise de dados"
+description: |
+  Curso básico de análise de dados sob demanda &mdash; Fabrício Garcia Moreira da Cruz 2021
+site: distill::distill_website
+date: 2021-10-14
+author:
+- name: Henrique Costa, Ms.C.
+  url: https://hcostax.netlify.app/
+#  affiliation: Perfil público
+#  affiliation_url: https://rstudio.com
+  orcid_id: 0000-0003-4591-4044
+---
+
+## Overview
+
+Este é o site para o mini curso sob demanda de 3 (três) semanas para R tidyverse básico aplicado à analise de dados. Neste curso, vou levá-los em um tour pelo ecosistema tidyverse e de como usa-lo para analisar dados, e criar visualizações. Aprendendo as técnicas mais utilizadas pelos cientistas de dados (baseado em R) da atualidade. 
+
+Todas as aulas serão gravadas sob o consentimento do aluno, e será disponibilizadas por link secreto via YouTube, caso queira revisar o conteúdo, que ficará disponível por 12 meses, a partir da data de encerramento do curso. 
+
+__Este curso abordará:__
+
++ Programação básica com tidyverse.
++ Fluxos de trabalho orientada a projetos.
++ Como desenvolver visualizações e seus estilos.
++ Como comunicar os resultados.
++ _Tópicos Especiais:_
+  + Introdução veloz e furiosa de econometria básica.
+  + Introdução à machine learning com tidyverse e tidymodels.
+
+
+## Cronograma
+
+
+### Dia 1
+
+| Horário       | Atividade                     |
+| :------------ | :--------------------------- |
+| 20:30 - 20:50 | The whole game   |
+| 20:50 - 21:00 | `r emo::ji("coffee")` Coffee break |
+| 21:00 - 21:30 | Visualize data  |
+
+<!-- Prepare-se para o dia seguinte recapitulando o que aprendeu até agora: -->
+
+<!-- -   Complete este tutorial [aqui](https://minecr.shinyapps.io/dsbox-01-edibnb/) -->
+<!-- -   Complete `AE 02 - Bechdel + R Markdown` on RStudio Cloud [here](https://rstd.io/dsbox-cloud) -->
+
+### Dia 2
+
+| Horário          | Atividade                     |
+| :------------ | :--------------------------- |
+| 20:30 - 20:50 | Wrangle data, Pt. 1   |
+| 20:50 - 21:00 | `r emo::ji("coffee")` Coffee break |
+| 21:00 - 21:30 | Wrangle data, Pt. 2   |
+
+<!-- -   Complete the tutorial on road traffic accidents [here](https://minecr.shinyapps.io/dsbox-02-accidents/) -->
+<!-- -   Complete the tutorial on college majors [here](https://minecr.shinyapps.io/dsbox-03-collegemajors/) -->
+
+### Dia 3
+
+| Horário          | Atividade                     |
+| :------------ | :--------------------------- |
+| 20:30 - 20:50 | Join data   |
+| 20:50 - 21:00 | `r emo::ji("coffee")` Coffee break |
+| 21:00 - 21:30 | Tidy data   |
+
+<!-- -   Complete the tutorial on bike share data [here](https://minecr.shinyapps.io/dsbox-06-dcbikeshare/) -->
+
+### Dia 4
+
+| Horário          | Atividade                     |
+| :------------ | :--------------------------- |
+| 20:30 - 20:50 | Data types   |
+| 20:50 - 21:00 | `r emo::ji("coffee")` Coffee break |
+| 21:00 - 21:30 | Import data   |
+
+
+
+### Dia 5
+
+| Horário          | Atividade                     |
+| :------------ | :--------------------------- |
+| 20:30 - 20:50 | Fluxos de trabalho orientada a projetos   |
+| 20:50 - 21:00 | `r emo::ji("coffee")` Coffee break |
+| 21:00 - 21:30 | Criando o primeiro projeto   |
+
+
+
+### Dia 6
+
+| Horário          | Atividade                     |
+| :------------ | :--------------------------- |
+| 20:30 - 20:50 | Comunicando os resultados: relatório   |
+| 20:50 - 21:00 | `r emo::ji("coffee")` Coffee break |
+| 21:00 - 21:30 | Comunicando os resultados: apresentação  |
+
+
+### Dia 7
+
+| Horário          | Atividade                     |
+| :------------ | :--------------------------- |
+| 20:30 - 20:50 | Introdução à econometria básica   |
+| 20:50 - 21:00 | `r emo::ji("coffee")` Coffee break |
+| 21:00 - 21:30 | Modelos econométricos  |
+
+
+### Dia 8
+
+| Horário          | Atividade                     |
+| :------------ | :--------------------------- |
+| 20:30 - 20:50 | Introdução à séries temporais   |
+| 20:50 - 21:00 | `r emo::ji("coffee")` Coffee break |
+| 21:00 - 21:30 | Introdução à  forecast |
+
+
+
+### Dia 9
+
+| Horário          | Atividade                     |
+| :------------ | :--------------------------- |
+| 20:30 - 20:50 | Revisão geral do tidyverse  |
+| 20:50 - 21:00 | `r emo::ji("coffee")` Coffee break |
+| 21:00 - 21:30 | Breve introdução ao _machine learning_ |
+
+
+
+### Dia 10
+
+| Horário          | Atividade                     |
+| :------------ | :--------------------------- |
+| 20:30 - 20:50 | Construir um modelo, pt. 1   |
+| 20:50 - 21:00 | `r emo::ji("coffee")` Coffee break |
+| 21:00 - 21:30 | Construir um modelo, pt. 2 |
+
+
+### Dia 11
+
+| Horário          | Atividade                     |
+| :------------ | :--------------------------- |
+| 20:30 - 20:50 | Crie fluxos de trabalho melhores, pt 1   |
+| 20:50 - 21:00 | `r emo::ji("coffee")` Coffee break |
+| 21:00 - 21:30 | Crie fluxos de trabalho melhores, pt 2 |
+
+
+
+### Dia 12
+
+| Horário          | Atividade                     |
+| :------------ | :--------------------------- |
+| 20:30 - 20:50 | Ajustar modelos melhores, pt 1   |
+| 20:50 - 21:00 | `r emo::ji("coffee")` Coffee break |
+| 21:00 - 21:30 | Ajustar modelos melhores, pt 2 |
+
+
+### Dia 13
+
+| Horário          | Atividade                     |
+| :------------ | :--------------------------- |
+| 20:30 - 20:50 | Challenge 1: Tidy Tuesday   |
+| 20:50 - 21:00 | `r emo::ji("coffee")` Coffee break |
+| 21:00 - 21:30 | Challenge 2: Kaggle   |
+
+
+### Dia 14
+
+| Horário          | Atividade                     |
+| :------------ | :--------------------------- |
+| 20:30 - 20:50 | Orientação Projeto Final, pt. 1  |
+| 20:50 - 21:00 | `r emo::ji("coffee")` Coffee break |
+| 21:00 - 21:30 | Orientação Projeto Final, pt. 2   |
+
+
+### Dia 14
+
+| Horário          | Atividade                     |
+| :------------ | :--------------------------- |
+| 20:30 - 20:50 | Projeto Final (sem aula)  |
+| 20:50 - 21:00 | `r emo::ji("coffee")` Coffee break |
+| 21:00 - 21:30 | Projeto Final (sem aula)  |
+
+
+### Dia 15
+
+| Horário          | Atividade                     |
+| :------------ | :--------------------------- |
+| 20:30 - 20:50 | Apresentação: Projeto Final  |
+| 20:50 - 21:00 | `r emo::ji("coffee")` Coffee break |
+| 21:00 - 21:30 | Apresentação: Projeto Final   |
+
+
+
+
+### Licença
+
+Observe que todos os materiais são lançados com licença [Creative Commons Attribution Share Alike 4.0 International](LICENSE.md). 
+
+
+
+<!-- + [01-rmd-anatomy](static/slides/00-econometrics/00-econometrics.html) -->
+
+<!-- + [02-output-tables](static/slides/02-output-tables.html) -->
+
+<!-- + [03-graphics](static/slides/03-graphics.html) -->
+
+<!-- + [04-data-workflows](static/slides/04-data-workflows.html) -->
+
