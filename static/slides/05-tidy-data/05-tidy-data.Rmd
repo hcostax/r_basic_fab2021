@@ -1,5 +1,5 @@
 ---
-title: "Data tidying and reshaping <br> `r emo::ji('broom')`"
+title: "Arrumando (tidying) e remodelando (reshaping) dados <br> `r emo::ji('broom')`"
 author: ""
 output:
   xaringan::moon_reader:
@@ -29,7 +29,7 @@ library(scales)
 library(patchwork)
 ```
 
-## A grammar of data tidying
+## A gramática dos dados arrumados (tidy)
 
 .pull-left[
 ```{r dplyr-part-of-tidyverse, echo=FALSE, out.width="70%", fig.align = "center", caption = "dplyr is part of the tidyverse"}
@@ -37,23 +37,20 @@ include_graphics("img/tidyr-part-of-tidyverse.png")
 ```
 ]
 .pull-right[
-The goal of tidyr is to help you create tidy data
+O objetivo do _tidyr_ é ajuda-lo a criar dados arrumados (tidy)
 ]
 
 ---
 
 class: middle
 
-# Instructional staff employment trends
+# Tendências de emprego nas equipes de ensino
 
 ---
 
-The American Association of 
-University Professors (AAUP) is a nonprofit membership association of faculty 
-and other academic professionals. 
-[This report](https://www.aaup.org/sites/default/files/files/AAUP_Report_InstrStaff-75-11_apr2013.pdf) 
-by the AAUP shows trends in instructional staff employees between 1975 
-and 2011, and contains an image very similar to the one given below.
+A Associação Americana de Professores Universitários (AAUP) é uma associação sem fins lucrativos de professores e outros profissionais acadêmicos. 
+[Este relatório](https://www.aaup.org/sites/default/files/files/AAUP_Report_InstrStaff-75-11_apr2013.pdf) 
+da AAUP mostra tendências nos funcionários da equipe de instrução entre 1975 e 2011, e contém uma imagem muito semelhante à da dada abaixo.
 
 ```{r echo=FALSE,out.width="70%",fig.align="center"}
 include_graphics("img/staff-employment.png")
@@ -61,11 +58,9 @@ include_graphics("img/staff-employment.png")
 
 ---
 
-## Data
+## Os dados
 
-Each row in this dataset represents a faculty type, and the columns are the 
-years for which we have data. The values are percentage of hires of that type 
-of faculty for each year.
+Cada linha neste conjunto de dados representa um tipo de corpo docente, e as colunas são os anos para os quais temos dados. Os valores são percentuais de contratações desse tipo de faculdade para cada ano.
 
 ```{r load-data-staff, message=FALSE}
 staff <- read_csv("data/instructional-staff.csv")
@@ -74,17 +69,14 @@ staff
 
 ---
 
-## Recreate the visualization
+## Recriar a visualização
 
-In order to recreate this visualization we need to first reshape the data to have 
-one variable for faculty type and one variable for year. In other words, 
-we will convert the data from the long format to wide format. 
+Para recriar essa visualização, precisamos primeiro remodelar os dados para ter uma variável para o tipo de corpo docente e uma variável para o ano. Em outras palavras, vamos converter os dados do formato longo ( _long_ ) para o formato amplo ( _wide_ ). 
 
-But before we do so... 
+Mas antes disso... 
 
 .discussion[
-If the long data will have a row for each year/faculty type combination, 
-and there are 5 faculty types and 11 years of data, how many rows will the data have?
+Se os dados longos terão uma linha para cada combinação tipo ano/corpo docente, e há 5 tipos de professores e 11 anos de dados, quantas linhas os dados terão?
 ]
 
 ---
@@ -97,7 +89,7 @@ include_graphics("img/pivot.gif")
 
 ---
 
-## `pivot_*()` functions
+## Funções `pivot_*()`
 
 
 ```{r echo=FALSE, out.width="50%"}
@@ -112,21 +104,22 @@ include_graphics("img/tidyr-longer-wider.gif")
 pivot_longer(data, cols, names_to = "name", values_to = "value")
 ```
 
-- The first argument is `data` as usual.
+- O primeiro argumento são os `dados` como usual.
+
 --
 
-- The second argument, `cols`, is where you specify which columns to pivot 
-into longer format -- in this case all columns except for the `faculty_type` 
+- O segundo argumento, `cols`, é onde você especifica quais colunas para pivotar em formato mais longo -- neste caso todas as colunas, exceto para o `faculty_type` 
+
 --
 
-- The third argument, `names_to`, is a string specifying the name of the column to create from the data stored in the column names of data -- in this case `year`
+- O terceiro argumento, `names_to`, é uma sequência especificando o nome da coluna para criar a partir dos dados armazenados nos nomes das colunas de dados -- neste caso `year`
 --
 
-- The fourth argument, `values_to`, is a string specifying the name of the column to create from the data stored in cell values, in this case `percentage`
+- O quarto argumento, `values_to`, é uma sequência especificando o nome da coluna para criar a partir dos dados armazenados em valores de célula, neste caso `percentage`
 
 ---
 
-## Pivot staff data
+## "Pivotando" os dados
 
 ```{r}
 staff %>%
@@ -139,7 +132,7 @@ staff %>%
 
 ---
 
-## Pivot staff data, and save result
+## "Pivotando" os dados, e salvando os resultados
 
 ```{r}
 staff_long <- staff %>%
@@ -155,7 +148,7 @@ staff_long
 ---
 
 .discussion[
-This doesn't look quite right, how would you fix it?
+Isso não parece certo, como você consertaria isso?
 ]
 
 ```{r out.width="70%"}
@@ -174,7 +167,7 @@ staff_long %>%
 
 ---
 
-## Some improvement...
+## Alguma melhoria...
 
 ```{r out.width="80%"}
 staff_long %>%
@@ -184,7 +177,7 @@ staff_long %>%
 
 ---
 
-## More improvement
+## Mais melhorias
 
 ```{r out.width="80%"}
 staff_long %>%
@@ -195,7 +188,7 @@ staff_long %>%
 ---
 
 .discussion[
-What is the difference between these two plots?
+Qual é a diferença entre esses dois plots?
 ]
 
 ```{r echo=FALSE, out.width="70%", fig.asp=0.7}
@@ -214,7 +207,7 @@ p1 + p2 +
 
 ---
 
-## Make year numeric again!
+## Faça a variável year como numérica novamente!
 
 ```{r out.width="70%"}
 staff_long <- staff_long %>%
@@ -228,7 +221,7 @@ staff_long %>%
 ---
 
 .discussion[
-How would you go about creating the following plot?
+Como você faria para criar o seguinte plot?
 ]
 
 ```{r echo=FALSE, out.width="80%"}
@@ -413,7 +406,7 @@ staff_long %>%
 
 class: middle
 
-# Other common tidying moves
+# Outros movimentos comuns para _tidy_
 
 ---
 
@@ -422,12 +415,12 @@ include_graphics("img/relig-income.png")
 ```
 
 .xsmall[
-Source: [pewforum.org/religious-landscape-study/income-distribution](https://www.pewforum.org/religious-landscape-study/income-distribution/), Retrieved 14 April, 2020
+Source: [pewforum.org/religious-landscape-study/income-distribution](https://www.pewforum.org/religious-landscape-study/income-distribution/),  Recuperado em 14 de abril de 2020
 ]
 
 ---
 
-## Read data 
+## Leia os dados 
 
 ```{r}
 library(readxl)
@@ -442,7 +435,7 @@ rel_inc
 
 ---
 
-## Rename columns
+## Renomear colunas
 
 .midi[
 ```{r}
@@ -457,7 +450,7 @@ rel_inc %>%
 --
 
 .discussion[
-If we want a new variable called `income` with levels such as "Less than $30,000", "$30,000-$49,999", ... etc. which function should we use?
+Se quisermos uma nova variável chamada `income` com níveis como "Menos de US $ 30.000", "$30.000-$49.999", ... etc. qual função devemos usar?
 ]
 
 ---
@@ -481,7 +474,7 @@ rel_inc %>%
 
 ---
 
-## Calculate frequencies
+## Calcular frequências
 
 .midi[
 ```{r}
@@ -501,7 +494,7 @@ rel_inc %>%
 
 ---
 
-## Save data
+## Salvar dados
 
 ```{r}
 rel_inc_long <- rel_inc %>%
@@ -519,7 +512,7 @@ rel_inc_long <- rel_inc %>%
 
 ---
 
-## Start plotting
+## Iniciando um plot
 
 ```{r out.width="80%"}
 ggplot(rel_inc_long, aes(y = religion, x = frequency)) +
@@ -528,7 +521,7 @@ ggplot(rel_inc_long, aes(y = religion, x = frequency)) +
 
 ---
 
-## Reverse religion order
+## Ordem de religião invertida
 
 ```{r out.width="80%"}
 ggplot(rel_inc_long, aes(y = fct_rev(religion), x = frequency)) + #<<
@@ -537,7 +530,7 @@ ggplot(rel_inc_long, aes(y = fct_rev(religion), x = frequency)) + #<<
 
 ---
 
-## Add income
+## Adicionar renda
 
 ```{r out.width="80%"}
 ggplot(rel_inc_long, aes(y = fct_rev(religion), x = frequency, fill = income)) + #<<
@@ -546,7 +539,7 @@ ggplot(rel_inc_long, aes(y = fct_rev(religion), x = frequency, fill = income)) +
 
 ---
 
-## Dodge bars
+## Barras de dodge
 
 .small[
 ```{r out.width="80%"}
@@ -557,7 +550,7 @@ ggplot(rel_inc_long, aes(y = fct_rev(religion), x = frequency, fill = income)) +
 
 ---
 
-## Change theme
+## Mudar de tema
 
 .small[
 ```{r out.width="80%"}
@@ -569,7 +562,7 @@ ggplot(rel_inc_long, aes(y = fct_rev(religion), x = frequency, fill = income)) +
 
 ---
 
-## Move legend to the bottom
+## Mova a legenda para baixo
 
 .small[
 ```{r out.width="80%"}
@@ -582,7 +575,7 @@ ggplot(rel_inc_long, aes(y = fct_rev(religion), x = frequency, fill = income)) +
 
 ---
 
-## Prettier colors
+## Cores mais bonitas
 
 .small[
 ```{r out.width="80%"}
@@ -596,7 +589,7 @@ ggplot(rel_inc_long, aes(y = fct_rev(religion), x = frequency, fill = income)) +
 
 ---
 
-## Fix labels
+## Corrigir rótulos
 
 ```{r eval=FALSE}
 ggplot(rel_inc_long, aes(y = fct_rev(religion), x = frequency, fill = income)) +

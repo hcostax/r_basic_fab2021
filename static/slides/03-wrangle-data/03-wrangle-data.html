@@ -26,11 +26,11 @@ class: center, middle, inverse, title-slide
 
 layout: true
   
-&lt;div class="my-footer"&gt;
-&lt;span&gt;
-&lt;a href="http://bit.ly/bootcamp-nuigalway" target="_blank"&gt;bit.ly/bootcamp-nuigalway&lt;/a&gt;
-&lt;/span&gt;
-&lt;/div&gt; 
+&lt;!-- &lt;div class="my-footer"&gt; --&gt;
+&lt;!-- &lt;span&gt; --&gt;
+&lt;!-- &lt;a href="http://bit.ly/bootcamp-nuigalway" target="_blank"&gt;bit.ly/bootcamp-nuigalway&lt;/a&gt; --&gt;
+&lt;!-- &lt;/span&gt; --&gt;
+&lt;!-- &lt;/div&gt;  --&gt;
 
 ---
 
@@ -44,22 +44,17 @@ class:middle
 
 ## Tidy data
 
-&gt;Happy families are all alike; every unhappy family is unhappy in its own way. 
-&gt;
-&gt;Leo Tolstoy
-
---
 
 .pull-left[
-**Characteristics of tidy data:**
+**Características dos _tidy data_:**
 
-- Each variable forms a column.
-- Each observation forms a row.
-- Each type of observational unit forms a table.
+- Cada variável forma uma coluna.
+- Cada observação forma uma linha.
+- Cada tipo de unidade observacional forma uma tabela.
 ]
 --
 .pull-right[
-**Characteristics of untidy data:**
+**Características dos _untidy data_:**
 
 !@#$%^&amp;*()
 ]
@@ -69,7 +64,7 @@ class:middle
 ## 
 
 .question[
-What makes this data not tidy?
+O que torna esses dados desarrumados (untidy)?
 ]
 
 &lt;img src="img/untidy-data/hyperwar-airplanes-on-hand.png" width="90%" style="display: block; margin: auto;" /&gt;
@@ -81,7 +76,7 @@ Source: [Army Air Forces Statistical Digest, WW II](https://www.ibiblio.org/hype
 ---
 
 .question[
-What makes this data not tidy?
+O que torna esses dados desarrumados (untidy)?
 ]
 
 &lt;br&gt;
@@ -95,7 +90,7 @@ Source: [Gapminder, Estimated HIV prevalence among 15-49 year olds](https://www.
 ---
 
 .question[
-What makes this data not tidy?
+O que torna esses dados desarrumados (untidy)?
 ]
 
 &lt;br&gt;
@@ -108,10 +103,10 @@ Source: [US Census Fact Finder, General Economic Characteristics, ACS 2017](http
 
 ---
 
-## Summary tables 
+## Tabelas resumo 
 
 .question[
-Is each of the following a dataset or a summary table?
+Exemplos:
 ]
 
 .midi[
@@ -127,7 +122,7 @@ Is each of the following a dataset or a summary table?
 ## 4 Darth Vader       202   136
 ## 5 Leia Organa       150    49
 ## 6 Owen Lars         178   120
-## # … with 81 more rows
+## # ... with 81 more rows
 ```
 ]
 .pull-right[
@@ -145,7 +140,7 @@ Is each of the following a dataset or a summary table?
 
 ---
 
-## Displaying data
+## Exibindo os dados
 
 
 ```r
@@ -153,7 +148,7 @@ starwars %&gt;%
   select(name, height, mass)
 ```
 
-## Summarizing data
+## Resumindo os dados
 
 
 ```r
@@ -168,48 +163,48 @@ starwars %&gt;%
 
 class:middle
 
-# Grammar of data wrangling
+# Gramática do _data wrangling_
 
 ---
 
-## A grammar of data wrangling...
+## Gramática do _data wrangling_...
 
-... based on the concepts of functions as verbs that manipulate data frames
+... com base nos conceitos de funções como verbos que manipulam quadros de dados
 
 .pull-left[
 &lt;img src="img/dplyr-part-of-tidyverse.png" width="80%" style="display: block; margin: auto;" /&gt;
 ]
 .pull-right[
 .midi[
-- `select`: pick columns by name
-- `arrange`: reorder rows
-- `slice`: pick rows using index(es)
-- `filter`: pick rows matching criteria
-- `distinct`: filter for unique rows
-- `mutate`: add new variables
-- `summarise`: reduce variables to values
-- `group_by`: for grouped operations
-- ... (many more)
+- `select`: escolher colunas pelo nome
+- `arrange`: reordenar linhas
+- `slice`: escolher linhas usando índice(es)
+- `filter`: escolher critérios de correspondência de linhas
+- `distinct`: filtro para linhas únicas
+- `mutate`: adicionar novas variáveis 
+- `summarise`: reduzir variáveis aos valores
+- `group_by`: operações agrupadas
+- ... (muito mais)
 ]
 ]
 
 ---
 
-## Rules of **dplyr** functions
+## Regras das funções **dplyr**
 
-- First argument is *always* a data frame
-- Subsequent arguments say what to do with that data frame
-- Always return a data frame
-- Don't modify in place
+- Primeiro argumento é *sempre* um data frame
+- Argumentos subsequentes dizem o que fazer com esse data frame
+- Sempre retorne um data frame
+
 
 ---
 
-## Data: Hotel bookings
+## Dados: Hotel bookings (reservas)
 
-- Data from two hotels: one resort and one city hotel
-- Observations: Each row represents a hotel booking
-- Goal for original data collection: Development of prediction models to classify a hotel booking's likelihood to be cancelled ([Antonia et al., 2019](https://www.sciencedirect.com/science/article/pii/S2352340918315191#bib5))
-- Featured in [TidyTuesday](https://github.com/rfordatascience/tidytuesday)!
+- Dados de dois hotéis: um resort e um hotel da cidade
+- Observações: Cada linha representa uma reserva de hotel
+- Meta para coleta de dados originais: Desenvolvimento de modelos de previsão para classificar a probabilidade de uma reserva de hotel ser cancelada ([Antonia et al., 2019](https://www.sciencedirect.com/science/article/pii/S2352340918315191#bib5))
+- Destaque no [TidyTuesday](https://github.com/rfordatascience/tidytuesday)!
 
 
 ```r
@@ -219,7 +214,7 @@ hotels &lt;- read_csv("https://raw.githubusercontent.com/rfordatascience/tidytue
 
 ---
 
-## First look: Variables
+## Primeira "olhada": Variáveis
 
 
 ```r
@@ -247,7 +242,7 @@ names(hotels)
 
 ---
 
-## Second look: Overview
+## Segunda "olhada": Overview (Visão geral)
 
 .xxsmall[
 
@@ -258,46 +253,46 @@ glimpse(hotels)
 ```
 ## Rows: 119,390
 ## Columns: 32
-## $ hotel                          &lt;chr&gt; "Resort Hotel", "Resort Hotel", "Resort Hotel", "Resort Ho…
-## $ is_canceled                    &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0…
-## $ lead_time                      &lt;dbl&gt; 342, 737, 7, 13, 14, 14, 0, 9, 85, 75, 23, 35, 68, 18, 37,…
-## $ arrival_date_year              &lt;dbl&gt; 2015, 2015, 2015, 2015, 2015, 2015, 2015, 2015, 2015, 2015…
-## $ arrival_date_month             &lt;chr&gt; "July", "July", "July", "July", "July", "July", "July", "J…
-## $ arrival_date_week_number       &lt;dbl&gt; 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27…
-## $ arrival_date_day_of_month      &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…
-## $ stays_in_weekend_nights        &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
-## $ stays_in_week_nights           &lt;dbl&gt; 0, 0, 1, 1, 2, 2, 2, 2, 3, 3, 4, 4, 4, 4, 4, 4, 4, 1, 1, 4…
-## $ adults                         &lt;dbl&gt; 2, 2, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2…
-## $ children                       &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0…
-## $ babies                         &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
-## $ meal                           &lt;chr&gt; "BB", "BB", "BB", "BB", "BB", "BB", "BB", "FB", "BB", "HB"…
-## $ country                        &lt;chr&gt; "PRT", "PRT", "GBR", "GBR", "GBR", "GBR", "PRT", "PRT", "P…
-## $ market_segment                 &lt;chr&gt; "Direct", "Direct", "Direct", "Corporate", "Online TA", "O…
-## $ distribution_channel           &lt;chr&gt; "Direct", "Direct", "Direct", "Corporate", "TA/TO", "TA/TO…
-## $ is_repeated_guest              &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
-## $ previous_cancellations         &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
-## $ previous_bookings_not_canceled &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
-## $ reserved_room_type             &lt;chr&gt; "C", "C", "A", "A", "A", "A", "C", "C", "A", "D", "E", "D"…
-## $ assigned_room_type             &lt;chr&gt; "C", "C", "C", "A", "A", "A", "C", "C", "A", "D", "E", "D"…
-## $ booking_changes                &lt;dbl&gt; 3, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0…
-## $ deposit_type                   &lt;chr&gt; "No Deposit", "No Deposit", "No Deposit", "No Deposit", "N…
-## $ agent                          &lt;chr&gt; "NULL", "NULL", "NULL", "304", "240", "240", "NULL", "303"…
-## $ company                        &lt;chr&gt; "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "N…
-## $ days_in_waiting_list           &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
-## $ customer_type                  &lt;chr&gt; "Transient", "Transient", "Transient", "Transient", "Trans…
-## $ adr                            &lt;dbl&gt; 0.00, 0.00, 75.00, 75.00, 98.00, 98.00, 107.00, 103.00, 82…
-## $ required_car_parking_spaces    &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
-## $ total_of_special_requests      &lt;dbl&gt; 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 3, 1, 0, 3, 0, 0, 0, 1…
-## $ reservation_status             &lt;chr&gt; "Check-Out", "Check-Out", "Check-Out", "Check-Out", "Check…
-## $ reservation_status_date        &lt;date&gt; 2015-07-01, 2015-07-01, 2015-07-02, 2015-07-02, 2015-07-0…
+## $ hotel                          &lt;chr&gt; "Resort Hotel", "Resort Hotel", "Resort Hotel", "Resort Hot~
+## $ is_canceled                    &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0,~
+## $ lead_time                      &lt;dbl&gt; 342, 737, 7, 13, 14, 14, 0, 9, 85, 75, 23, 35, 68, 18, 37, ~
+## $ arrival_date_year              &lt;dbl&gt; 2015, 2015, 2015, 2015, 2015, 2015, 2015, 2015, 2015, 2015,~
+## $ arrival_date_month             &lt;chr&gt; "July", "July", "July", "July", "July", "July", "July", "Ju~
+## $ arrival_date_week_number       &lt;dbl&gt; 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27,~
+## $ arrival_date_day_of_month      &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,~
+## $ stays_in_weekend_nights        &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,~
+## $ stays_in_week_nights           &lt;dbl&gt; 0, 0, 1, 1, 2, 2, 2, 2, 3, 3, 4, 4, 4, 4, 4, 4, 4, 1, 1, 4,~
+## $ adults                         &lt;dbl&gt; 2, 2, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,~
+## $ children                       &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0,~
+## $ babies                         &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,~
+## $ meal                           &lt;chr&gt; "BB", "BB", "BB", "BB", "BB", "BB", "BB", "FB", "BB", "HB",~
+## $ country                        &lt;chr&gt; "PRT", "PRT", "GBR", "GBR", "GBR", "GBR", "PRT", "PRT", "PR~
+## $ market_segment                 &lt;chr&gt; "Direct", "Direct", "Direct", "Corporate", "Online TA", "On~
+## $ distribution_channel           &lt;chr&gt; "Direct", "Direct", "Direct", "Corporate", "TA/TO", "TA/TO"~
+## $ is_repeated_guest              &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,~
+## $ previous_cancellations         &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,~
+## $ previous_bookings_not_canceled &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,~
+## $ reserved_room_type             &lt;chr&gt; "C", "C", "A", "A", "A", "A", "C", "C", "A", "D", "E", "D",~
+## $ assigned_room_type             &lt;chr&gt; "C", "C", "C", "A", "A", "A", "C", "C", "A", "D", "E", "D",~
+## $ booking_changes                &lt;dbl&gt; 3, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0,~
+## $ deposit_type                   &lt;chr&gt; "No Deposit", "No Deposit", "No Deposit", "No Deposit", "No~
+## $ agent                          &lt;chr&gt; "NULL", "NULL", "NULL", "304", "240", "240", "NULL", "303",~
+## $ company                        &lt;chr&gt; "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NU~
+## $ days_in_waiting_list           &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,~
+## $ customer_type                  &lt;chr&gt; "Transient", "Transient", "Transient", "Transient", "Transi~
+## $ adr                            &lt;dbl&gt; 0.00, 0.00, 75.00, 75.00, 98.00, 98.00, 107.00, 103.00, 82.~
+## $ required_car_parking_spaces    &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,~
+## $ total_of_special_requests      &lt;dbl&gt; 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 3, 1, 0, 3, 0, 0, 0, 1,~
+## $ reservation_status             &lt;chr&gt; "Check-Out", "Check-Out", "Check-Out", "Check-Out", "Check-~
+## $ reservation_status_date        &lt;date&gt; 2015-07-01, 2015-07-01, 2015-07-02, 2015-07-02, 2015-07-03~
 ```
 ]
 
 ---
 
-## Select a single column
+## Selecione uma única coluna
 
-View only the `lead_time` type (number of days between booking and arrival date):
+Exibir apenas o tipo `lead_time` (número de dias entre a reserva e a data de chegada):
 
 --
 .pull-left[
@@ -316,22 +311,21 @@ select(.data = hotels, lead_time)
 ## 4        13
 ## 5        14
 ## 6        14
-## # … with 119,384 more rows
+## # ... with 119,384 more rows
 ```
 ]
 --
 .pull-right[
-- Start with the function (a verb): `select()`
-- First argument is `.data` (the data frame we're working with) = `hotels`
-- Second argument is variable we want to select: `lead_time`
-- The result is a data frame with 119,300 and 1 column: --dplyr functions always 
-expect a data frame and always yield a data frame.
+- Comece com a função (um verbo): `select()`
+- O primeiro argumento é `.data` (o quadro de dados com o que estamos trabalhando) = `hotels`
+- O segundo argumento é variável que queremos selecionar: `lead_time`
+- O resultado é um quadro de dados com 119.300 e 1 coluna: --funções dplyr sempre esperam um data frame e sempre produzem um data frame.
 ]
 
 ---
 
 .tip[
-You can skip the argument name for the first two arguments of a function.
+Você pode pular o nome do argumento para os dois primeiros argumentos de uma função.
 ]
 
 .pull-left[
@@ -350,7 +344,7 @@ select(.data = hotels, lead_time)
 ## 4        13
 ## 5        14
 ## 6        14
-## # … with 119,384 more rows
+## # ... with 119,384 more rows
 ```
 ]
 .pull-right[
@@ -369,16 +363,16 @@ select(hotels, lead_time)
 ## 4        13
 ## 5        14
 ## 6        14
-## # … with 119,384 more rows
+## # ... with 119,384 more rows
 ```
 ]
 
 ---
 
-## Select multiple columns
+## Selecione várias colunas
 
 
-View only the `hotel` type and `lead_time`:
+Veja apenas o tipo `hotel` e `lead_time`:
 
 --
 
@@ -398,22 +392,22 @@ select(hotels, hotel, lead_time)
 ## 4 Resort Hotel        13
 ## 5 Resort Hotel        14
 ## 6 Resort Hotel        14
-## # … with 119,384 more rows
+## # ... with 119,384 more rows
 ```
 ]
 --
 .pull-right[
 .discussion[
-What if we wanted to select these columns, and then arrange the data in descending order of lead time?
+E se quiséssemos selecionar essas colunas e, em seguida, organizar os dados na ordem decrescente do tempo de espera?
 ]
 ]
 
 ---
 
-## Data wrangling, step-by-step
+## Data wrangling, passo a passo
 
 .pull-left[
-Select:
+Selecionar:
 
 ```r
 hotels %&gt;%
@@ -430,13 +424,13 @@ hotels %&gt;%
 ## 4 Resort Hotel        13
 ## 5 Resort Hotel        14
 ## 6 Resort Hotel        14
-## # … with 119,384 more rows
+## # ... with 119,384 more rows
 ```
 ]
 
 --
 .pull-right[
-Select, then arrange:
+Selecione e organize:
 
 ```r
 hotels %&gt;%
@@ -454,7 +448,7 @@ hotels %&gt;%
 ## 4 City Hotel         629
 ## 5 City Hotel         629
 ## 6 City Hotel         629
-## # … with 119,384 more rows
+## # ... with 119,384 more rows
 ```
 ]
 
@@ -462,18 +456,18 @@ hotels %&gt;%
 
 class: middle
 
-# Pipes
+# Pipes %&gt;% 
 
 ---
 
-## What is a pipe?
+## O que é um pipe?
 
-In programming, a pipe is a technique for passing information from one process to another.
+Na programação, um _pipe_ é uma técnica para passar informações de um processo para outro.
 
 --
 
 .pull-left[
-- Start with the data frame `hotels`, and pass it to the `select()` function,
+- Comece com o data frame `hotels`, e passe-o para a função `select()`,
 ]
 .pull-right[
 .small[
@@ -494,20 +488,21 @@ In programming, a pipe is a technique for passing information from one process t
 ## 4 City Hotel         629
 ## 5 City Hotel         629
 ## 6 City Hotel         629
-## # … with 119,384 more rows
+## # ... with 119,384 more rows
 ```
 ]
 ]
 
 ---
 
-## What is a pipe?
+## O que é um pipe?
 
-In programming, a pipe is a technique for passing information from one process to another.
+Na programação, um _pipe_ é uma técnica para passar informações de um processo para outro.
+
 
 .pull-left[
-- Start with the data frame `hotels`, and pass it to the `select()` function,
-- then we select the variables `hotel` and `lead_time`,
+- Comece com o data frame `hotels`, e passe-o para a função `select()`,
+- então selecionamos as variáveis `hotel` e `lead_time`,
 ]
 .pull-right[
 .small[
@@ -528,21 +523,22 @@ hotels %&gt;%
 ## 4 City Hotel         629
 ## 5 City Hotel         629
 ## 6 City Hotel         629
-## # … with 119,384 more rows
+## # ... with 119,384 more rows
 ```
 ]
 ]
 
 ---
 
-## What is a pipe?
+## O que é um pipe?
 
-In programming, a pipe is a technique for passing information from one process to another.
+Na programação, um _pipe_ é uma técnica para passar informações de um processo para outro.
+
 
 .pull-left[
-- Start with the data frame `hotels`, and pass it to the `select()` function,
-- then we select the variables `hotel` and `lead_time`,
-- and then we arrange the data frame by `lead_time` in descending order.
+- Comece com o data frame `hotels`, e passe-o para a função `select()`,
+- então selecionamos as variáveis `hotel` e `lead_time`,
+- e, em seguida, organizamos o data frame por `lead_time` em ordem descendente.
 ]
 .pull-right[
 .small[
@@ -563,21 +559,29 @@ hotels %&gt;%
 ## 4 City Hotel         629
 ## 5 City Hotel         629
 ## 6 City Hotel         629
-## # … with 119,384 more rows
+## # ... with 119,384 more rows
 ```
 ]
 ]
 
 ---
 
-## Aside
+## Pipes %&gt;%
 
-The pipe operator is implemented in the package **magrittr**, though we don't need to load this package explicitly since **tidyverse** does this for us.
+O operador de _pipe_ é implementado pelo pacote **magrittr**, embora não precisemos carregar este pacote explicitamente, uma vez que o pacote **tidyverse** faz isso por nós.
 
 --
 
 .discussion[
-Any guesses as to why the package is called magrittr?
+Algum palpite sobre por que o pacote se chama magrittr?
+]
+
+---
+
+## Pipes %&gt;%
+
+.discussion[
+_ há uma famosa obra do pintor belga René Magritte em que se vê um cachimbo e, sob este, a inscrição "ceci n'est pas une pipe" (isto não é um cachimbo)_
 ]
 
 --
@@ -663,7 +667,7 @@ hotels +
 ```
 
 ```
-## Error in select(hotel, lead_time): object 'hotel' not found
+## Error in select(hotel, lead_time): objeto 'hotel' não encontrado
 ```
 
 ✅
@@ -685,7 +689,7 @@ hotels %&gt;%
 ## 4 Resort Hotel        13
 ## 5 Resort Hotel        14
 ## 6 Resort Hotel        14
-## # … with 119,384 more rows
+## # ... with 119,384 more rows
 ```
 ]
 
@@ -778,7 +782,7 @@ hotels %&gt;%
 ## 4 Resort Hotel        13
 ## 5 Resort Hotel        14
 ## 6 Resort Hotel        14
-## # … with 119,384 more rows
+## # ... with 119,384 more rows
 ```
 
 ---
@@ -794,15 +798,15 @@ hotels %&gt;%
 
 ```
 ## # A tibble: 119,390 x 31
-##   hotel is_canceled lead_time arrival_date_ye… arrival_date_mo… arrival_date_we… arrival_date_da…
-##   &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;            &lt;dbl&gt; &lt;chr&gt;                       &lt;dbl&gt;            &lt;dbl&gt;
-## 1 Reso…           0       342             2015 July                           27                1
-## 2 Reso…           0       737             2015 July                           27                1
-## 3 Reso…           0         7             2015 July                           27                1
-## 4 Reso…           0        13             2015 July                           27                1
-## 5 Reso…           0        14             2015 July                           27                1
-## 6 Reso…           0        14             2015 July                           27                1
-## # … with 119,384 more rows, and 24 more variables: stays_in_weekend_nights &lt;dbl&gt;,
+##   hotel  is_canceled lead_time arrival_date_year arrival_date_mo~ arrival_date_we~ arrival_date_day~
+##   &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;             &lt;dbl&gt; &lt;chr&gt;                       &lt;dbl&gt;             &lt;dbl&gt;
+## 1 Resor~           0       342              2015 July                           27                 1
+## 2 Resor~           0       737              2015 July                           27                 1
+## 3 Resor~           0         7              2015 July                           27                 1
+## 4 Resor~           0        13              2015 July                           27                 1
+## 5 Resor~           0        14              2015 July                           27                 1
+## 6 Resor~           0        14              2015 July                           27                 1
+## # ... with 119,384 more rows, and 24 more variables: stays_in_weekend_nights &lt;dbl&gt;,
 ## #   stays_in_week_nights &lt;dbl&gt;, adults &lt;dbl&gt;, children &lt;dbl&gt;, babies &lt;dbl&gt;, meal &lt;chr&gt;,
 ## #   country &lt;chr&gt;, market_segment &lt;chr&gt;, distribution_channel &lt;chr&gt;, is_repeated_guest &lt;dbl&gt;,
 ## #   previous_cancellations &lt;dbl&gt;, previous_bookings_not_canceled &lt;dbl&gt;, reserved_room_type &lt;chr&gt;,
@@ -832,7 +836,7 @@ hotels %&gt;%
 ## 4 Resort Hotel           0        13              2015 July              
 ## 5 Resort Hotel           0        14              2015 July              
 ## 6 Resort Hotel           0        14              2015 July              
-## # … with 119,384 more rows
+## # ... with 119,384 more rows
 ```
 
 ---
@@ -855,7 +859,7 @@ hotels %&gt;%
 ## 4              2015 July                                     27                         1
 ## 5              2015 July                                     27                         1
 ## 6              2015 July                                     27                         1
-## # … with 119,384 more rows
+## # ... with 119,384 more rows
 ```
 
 ---
@@ -878,7 +882,7 @@ hotels %&gt;%
 ## 4 A                  A                  No Deposit   Transient    
 ## 5 A                  A                  No Deposit   Transient    
 ## 6 A                  A                  No Deposit   Transient    
-## # … with 119,384 more rows
+## # ... with 119,384 more rows
 ```
 
 ---
@@ -920,7 +924,7 @@ hotels %&gt;%
 ## 4      1        0      0
 ## 5      2        0      0
 ## 6      2        0      0
-## # … with 119,384 more rows
+## # ... with 119,384 more rows
 ```
 ]
 .pull-right[
@@ -941,7 +945,7 @@ hotels %&gt;%
 ## 4      2        0      2
 ## 5      2        0      2
 ## 6      2        0      2
-## # … with 119,384 more rows
+## # ... with 119,384 more rows
 ```
 ]
 
@@ -959,14 +963,14 @@ hotels %&gt;%
 
 ```
 ## # A tibble: 5 x 32
-##   hotel is_canceled lead_time arrival_date_ye… arrival_date_mo… arrival_date_we… arrival_date_da…
-##   &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;            &lt;dbl&gt; &lt;chr&gt;                       &lt;dbl&gt;            &lt;dbl&gt;
-## 1 Reso…           0       342             2015 July                           27                1
-## 2 Reso…           0       737             2015 July                           27                1
-## 3 Reso…           0         7             2015 July                           27                1
-## 4 Reso…           0        13             2015 July                           27                1
-## 5 Reso…           0        14             2015 July                           27                1
-## # … with 25 more variables: stays_in_weekend_nights &lt;dbl&gt;, stays_in_week_nights &lt;dbl&gt;,
+##   hotel  is_canceled lead_time arrival_date_year arrival_date_mo~ arrival_date_we~ arrival_date_day~
+##   &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;             &lt;dbl&gt; &lt;chr&gt;                       &lt;dbl&gt;             &lt;dbl&gt;
+## 1 Resor~           0       342              2015 July                           27                 1
+## 2 Resor~           0       737              2015 July                           27                 1
+## 3 Resor~           0         7              2015 July                           27                 1
+## 4 Resor~           0        13              2015 July                           27                 1
+## 5 Resor~           0        14              2015 July                           27                 1
+## # ... with 25 more variables: stays_in_weekend_nights &lt;dbl&gt;, stays_in_week_nights &lt;dbl&gt;,
 ## #   adults &lt;dbl&gt;, children &lt;dbl&gt;, babies &lt;dbl&gt;, meal &lt;chr&gt;, country &lt;chr&gt;, market_segment &lt;chr&gt;,
 ## #   distribution_channel &lt;chr&gt;, is_repeated_guest &lt;dbl&gt;, previous_cancellations &lt;dbl&gt;,
 ## #   previous_bookings_not_canceled &lt;dbl&gt;, reserved_room_type &lt;chr&gt;, assigned_room_type &lt;chr&gt;,
@@ -997,14 +1001,14 @@ hotels %&gt;%
 
 ```
 ## # A tibble: 5 x 32
-##   hotel is_canceled lead_time arrival_date_ye… arrival_date_mo… arrival_date_we… arrival_date_da…
-##   &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;            &lt;dbl&gt; &lt;chr&gt;                       &lt;dbl&gt;            &lt;dbl&gt;
-## 1 Reso…           0       342             2015 July                           27                1
-## 2 Reso…           0       737             2015 July                           27                1
-## 3 Reso…           0         7             2015 July                           27                1
-## 4 Reso…           0        13             2015 July                           27                1
-## 5 Reso…           0        14             2015 July                           27                1
-## # … with 25 more variables: stays_in_weekend_nights &lt;dbl&gt;, stays_in_week_nights &lt;dbl&gt;,
+##   hotel  is_canceled lead_time arrival_date_year arrival_date_mo~ arrival_date_we~ arrival_date_day~
+##   &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;             &lt;dbl&gt; &lt;chr&gt;                       &lt;dbl&gt;             &lt;dbl&gt;
+## 1 Resor~           0       342              2015 July                           27                 1
+## 2 Resor~           0       737              2015 July                           27                 1
+## 3 Resor~           0         7              2015 July                           27                 1
+## 4 Resor~           0        13              2015 July                           27                 1
+## 5 Resor~           0        14              2015 July                           27                 1
+## # ... with 25 more variables: stays_in_weekend_nights &lt;dbl&gt;, stays_in_week_nights &lt;dbl&gt;,
 ## #   adults &lt;dbl&gt;, children &lt;dbl&gt;, babies &lt;dbl&gt;, meal &lt;chr&gt;, country &lt;chr&gt;, market_segment &lt;chr&gt;,
 ## #   distribution_channel &lt;chr&gt;, is_repeated_guest &lt;dbl&gt;, previous_cancellations &lt;dbl&gt;,
 ## #   previous_bookings_not_canceled &lt;dbl&gt;, reserved_room_type &lt;chr&gt;, assigned_room_type &lt;chr&gt;,
@@ -1029,14 +1033,14 @@ hotels %&gt;%
 
 ```
 ## # A tibble: 5 x 32
-##   hotel is_canceled lead_time arrival_date_ye… arrival_date_mo… arrival_date_we… arrival_date_da…
-##   &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;            &lt;dbl&gt; &lt;chr&gt;                       &lt;dbl&gt;            &lt;dbl&gt;
-## 1 City…           0        23             2017 August                         35               30
-## 2 City…           0       102             2017 August                         35               31
-## 3 City…           0        34             2017 August                         35               31
-## 4 City…           0       109             2017 August                         35               31
-## 5 City…           0       205             2017 August                         35               29
-## # … with 25 more variables: stays_in_weekend_nights &lt;dbl&gt;, stays_in_week_nights &lt;dbl&gt;,
+##   hotel  is_canceled lead_time arrival_date_year arrival_date_mo~ arrival_date_we~ arrival_date_day~
+##   &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;             &lt;dbl&gt; &lt;chr&gt;                       &lt;dbl&gt;             &lt;dbl&gt;
+## 1 City ~           0        23              2017 August                         35                30
+## 2 City ~           0       102              2017 August                         35                31
+## 3 City ~           0        34              2017 August                         35                31
+## 4 City ~           0       109              2017 August                         35                31
+## 5 City ~           0       205              2017 August                         35                29
+## # ... with 25 more variables: stays_in_weekend_nights &lt;dbl&gt;, stays_in_week_nights &lt;dbl&gt;,
 ## #   adults &lt;dbl&gt;, children &lt;dbl&gt;, babies &lt;dbl&gt;, meal &lt;chr&gt;, country &lt;chr&gt;, market_segment &lt;chr&gt;,
 ## #   distribution_channel &lt;chr&gt;, is_repeated_guest &lt;dbl&gt;, previous_cancellations &lt;dbl&gt;,
 ## #   previous_bookings_not_canceled &lt;dbl&gt;, reserved_room_type &lt;chr&gt;, assigned_room_type &lt;chr&gt;,
@@ -1060,22 +1064,21 @@ hotels %&gt;%
 
 ```
 ## # A tibble: 79,330 x 32
-##   hotel is_canceled lead_time arrival_date_ye… arrival_date_mo… arrival_date_we… arrival_date_da…
-##   &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;            &lt;dbl&gt; &lt;chr&gt;                       &lt;dbl&gt;            &lt;dbl&gt;
-## 1 City…           0         6             2015 July                           27                1
-## 2 City…           1        88             2015 July                           27                1
-## 3 City…           1        65             2015 July                           27                1
-## 4 City…           1        92             2015 July                           27                1
-## 5 City…           1       100             2015 July                           27                2
-## 6 City…           1        79             2015 July                           27                2
-## # … with 79,324 more rows, and 25 more variables: stays_in_weekend_nights &lt;dbl&gt;,
+##   hotel  is_canceled lead_time arrival_date_year arrival_date_mo~ arrival_date_we~ arrival_date_day~
+##   &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;             &lt;dbl&gt; &lt;chr&gt;                       &lt;dbl&gt;             &lt;dbl&gt;
+## 1 City ~           0         6              2015 July                           27                 1
+## 2 City ~           1        88              2015 July                           27                 1
+## 3 City ~           1        65              2015 July                           27                 1
+## 4 City ~           1        92              2015 July                           27                 1
+## 5 City ~           1       100              2015 July                           27                 2
+## 6 City ~           1        79              2015 July                           27                 2
+## # ... with 79,324 more rows, and 25 more variables: stays_in_weekend_nights &lt;dbl&gt;,
 ## #   stays_in_week_nights &lt;dbl&gt;, adults &lt;dbl&gt;, children &lt;dbl&gt;, babies &lt;dbl&gt;, meal &lt;chr&gt;,
 ## #   country &lt;chr&gt;, market_segment &lt;chr&gt;, distribution_channel &lt;chr&gt;, is_repeated_guest &lt;dbl&gt;,
 ## #   previous_cancellations &lt;dbl&gt;, previous_bookings_not_canceled &lt;dbl&gt;, reserved_room_type &lt;chr&gt;,
 ## #   assigned_room_type &lt;chr&gt;, booking_changes &lt;dbl&gt;, deposit_type &lt;chr&gt;, agent &lt;chr&gt;,
 ## #   company &lt;chr&gt;, days_in_waiting_list &lt;dbl&gt;, customer_type &lt;chr&gt;, adr &lt;dbl&gt;,
-## #   required_car_parking_spaces &lt;dbl&gt;, total_of_special_requests &lt;dbl&gt;, reservation_status &lt;chr&gt;,
-## #   reservation_status_date &lt;date&gt;
+## #   required_car_parking_spaces &lt;dbl&gt;, total_of_special_requests &lt;dbl&gt;, ...
 ```
 ]
 
@@ -1103,7 +1106,7 @@ hotels %&gt;%
 ## 4      0      0        2
 ## 5      0      0        2
 ## 6      0      0        3
-## # … with 217 more rows
+## # ... with 217 more rows
 ```
 
 ---
@@ -1131,7 +1134,7 @@ hotels %&gt;%
 ## 4      0      0        2
 ## 5      0      0        2
 ## 6      0      0        3
-## # … with 217 more rows
+## # ... with 217 more rows
 ```
 
 ---
@@ -1160,7 +1163,7 @@ Time to actually play around with the Star Wars dataset!
 - Open the R Markdown document and complete Exercises 1 - 4.
 ]
 
-<div class="countdown" id="timer_5f4ec6ca" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_61a227eb" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">15</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -1431,7 +1434,7 @@ Time to actually play around with the Star Wars dataset!
 - Open the R Markdown document and complete Exercises 5 and 6.
 ]
 
-<div class="countdown" id="timer_5f4ec595" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_61a22681" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -1457,7 +1460,7 @@ hotels %&gt;%
 ## 4        2      1           3
 ## 5        2      1           3
 ## 6        2      1           3
-## # … with 119,384 more rows
+## # ... with 119,384 more rows
 ```
 
 ---
@@ -1490,7 +1493,7 @@ hotels %&gt;%
 ## 4 Resort Hotel           2
 ## 5 Resort Hotel           1
 ## 6 Resort Hotel           1
-## # … with 3,923 more rows
+## # ... with 3,923 more rows
 ```
 ]
 .pull-right[
@@ -1516,7 +1519,7 @@ hotels %&gt;%
 ## 4 City Hotel           2
 ## 5 City Hotel           2
 ## 6 City Hotel           2
-## # … with 2,134 more rows
+## # ... with 2,134 more rows
 ```
 ]
 ]
@@ -1712,7 +1715,7 @@ hotels %&gt;%
 - Once done, place a green sticky on your laptop. If you have questions, place a pink sticky.
 ]
 
-<div class="countdown" id="timer_5f4ec469" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_61a225e3" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
     </textarea>
@@ -1723,7 +1726,7 @@ hotels %&gt;%
 "highlightLines": true,
 "countIncrementalSlides": false,
 "ratio": "16:9",
-"slideNumberFormat": "<div class=\"progress-bar-container\">   <div class=\"progress-bar\" style=\"width: calc(%current% / %total% * 100%);\">   </div> </div>"
+"slideNumberFormat": "<div class=\"progress-bar-container\">\n  <div class=\"progress-bar\" style=\"width: calc(%current% / %total% * 100%);\">\n  </div>\n</div>"
 });
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   window.dispatchEvent(new Event('resize'));

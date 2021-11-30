@@ -34,22 +34,17 @@ class:middle
 
 ## Tidy data
 
->Happy families are all alike; every unhappy family is unhappy in its own way. 
->
->Leo Tolstoy
-
---
 
 .pull-left[
-**Characteristics of tidy data:**
+**Características dos _tidy data_:**
 
-- Each variable forms a column.
-- Each observation forms a row.
-- Each type of observational unit forms a table.
+- Cada variável forma uma coluna.
+- Cada observação forma uma linha.
+- Cada tipo de unidade observacional forma uma tabela.
 ]
 --
 .pull-right[
-**Characteristics of untidy data:**
+**Características dos _untidy data_:**
 
 !@#$%^&*()
 ]
@@ -59,7 +54,7 @@ class:middle
 ## 
 
 .question[
-What makes this data not tidy?
+O que torna esses dados desarrumados (untidy)?
 ]
 
 ```{r hyperwar-airplanes-on-hand, echo=FALSE, out.width="90%", fig.align = "center", caption = "WW2 Army Air Force combat aircraft"}
@@ -73,7 +68,7 @@ Source: [Army Air Forces Statistical Digest, WW II](https://www.ibiblio.org/hype
 ---
 
 .question[
-What makes this data not tidy?
+O que torna esses dados desarrumados (untidy)?
 ]
 
 <br>
@@ -89,7 +84,7 @@ Source: [Gapminder, Estimated HIV prevalence among 15-49 year olds](https://www.
 ---
 
 .question[
-What makes this data not tidy?
+O que torna esses dados desarrumados (untidy)?
 ]
 
 <br>
@@ -104,10 +99,10 @@ Source: [US Census Fact Finder, General Economic Characteristics, ACS 2017](http
 
 ---
 
-## Summary tables 
+## Tabelas resumo 
 
 .question[
-Is each of the following a dataset or a summary table?
+Exemplos:
 ]
 
 .midi[
@@ -130,14 +125,14 @@ starwars %>%
 
 ---
 
-## Displaying data
+## Exibindo os dados
 
 ```{r eval=FALSE}
 starwars %>%
   select(name, height, mass)
 ```
 
-## Summarizing data
+## Resumindo os dados
 
 ```{r eval=FALSE}
 starwars %>%
@@ -151,13 +146,13 @@ starwars %>%
 
 class:middle
 
-# Grammar of data wrangling
+# Gramática do _data wrangling_
 
 ---
 
-## A grammar of data wrangling...
+## Gramática do _data wrangling_...
 
-... based on the concepts of functions as verbs that manipulate data frames
+... com base nos conceitos de funções como verbos que manipulam quadros de dados
 
 .pull-left[
 ```{r dplyr-part-of-tidyverse, echo=FALSE, out.width="80%", fig.align = "center", caption = "dplyr is part of the tidyverse"}
@@ -166,35 +161,35 @@ knitr::include_graphics("img/dplyr-part-of-tidyverse.png")
 ]
 .pull-right[
 .midi[
-- `select`: pick columns by name
-- `arrange`: reorder rows
-- `slice`: pick rows using index(es)
-- `filter`: pick rows matching criteria
-- `distinct`: filter for unique rows
-- `mutate`: add new variables
-- `summarise`: reduce variables to values
-- `group_by`: for grouped operations
-- ... (many more)
+- `select`: escolher colunas pelo nome
+- `arrange`: reordenar linhas
+- `slice`: escolher linhas usando índice(es)
+- `filter`: escolher critérios de correspondência de linhas
+- `distinct`: filtro para linhas únicas
+- `mutate`: adicionar novas variáveis 
+- `summarise`: reduzir variáveis aos valores
+- `group_by`: operações agrupadas
+- ... (muito mais)
 ]
 ]
 
 ---
 
-## Rules of **dplyr** functions
+## Regras das funções **dplyr**
 
-- First argument is *always* a data frame
-- Subsequent arguments say what to do with that data frame
-- Always return a data frame
-- Don't modify in place
+- Primeiro argumento é *sempre* um data frame
+- Argumentos subsequentes dizem o que fazer com esse data frame
+- Sempre retorne um data frame
+
 
 ---
 
-## Data: Hotel bookings
+## Dados: Hotel bookings (reservas)
 
-- Data from two hotels: one resort and one city hotel
-- Observations: Each row represents a hotel booking
-- Goal for original data collection: Development of prediction models to classify a hotel booking's likelihood to be cancelled ([Antonia et al., 2019](https://www.sciencedirect.com/science/article/pii/S2352340918315191#bib5))
-- Featured in [TidyTuesday](https://github.com/rfordatascience/tidytuesday)!
+- Dados de dois hotéis: um resort e um hotel da cidade
+- Observações: Cada linha representa uma reserva de hotel
+- Meta para coleta de dados originais: Desenvolvimento de modelos de previsão para classificar a probabilidade de uma reserva de hotel ser cancelada ([Antonia et al., 2019](https://www.sciencedirect.com/science/article/pii/S2352340918315191#bib5))
+- Destaque no [TidyTuesday](https://github.com/rfordatascience/tidytuesday)!
 
 ```{r load-data, message = FALSE}
 # From TidyTuesday: https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-02-11/readme.md
@@ -203,7 +198,7 @@ hotels <- read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesda
 
 ---
 
-## First look: Variables
+## Primeira "olhada": Variáveis
 
 ```{r message=FALSE}
 names(hotels)
@@ -211,7 +206,7 @@ names(hotels)
 
 ---
 
-## Second look: Overview
+## Segunda "olhada": Overview (Visão geral)
 
 .xxsmall[
 ```{r}
@@ -221,9 +216,9 @@ glimpse(hotels)
 
 ---
 
-## Select a single column
+## Selecione uma única coluna
 
-View only the `lead_time` type (number of days between booking and arrival date):
+Exibir apenas o tipo `lead_time` (número de dias entre a reserva e a data de chegada):
 
 --
 .pull-left[
@@ -233,17 +228,16 @@ select(.data = hotels, lead_time)
 ]
 --
 .pull-right[
-- Start with the function (a verb): `select()`
-- First argument is `.data` (the data frame we're working with) = `hotels`
-- Second argument is variable we want to select: `lead_time`
-- The result is a data frame with 119,300 and 1 column: --dplyr functions always 
-expect a data frame and always yield a data frame.
+- Comece com a função (um verbo): `select()`
+- O primeiro argumento é `.data` (o quadro de dados com o que estamos trabalhando) = `hotels`
+- O segundo argumento é variável que queremos selecionar: `lead_time`
+- O resultado é um quadro de dados com 119.300 e 1 coluna: --funções dplyr sempre esperam um data frame e sempre produzem um data frame.
 ]
 
 ---
 
 .tip[
-You can skip the argument name for the first two arguments of a function.
+Você pode pular o nome do argumento para os dois primeiros argumentos de uma função.
 ]
 
 .pull-left[
@@ -259,10 +253,10 @@ select(hotels, lead_time)
 
 ---
 
-## Select multiple columns
+## Selecione várias colunas
 
 
-View only the `hotel` type and `lead_time`:
+Veja apenas o tipo `hotel` e `lead_time`:
 
 --
 
@@ -274,16 +268,16 @@ select(hotels, hotel, lead_time)
 --
 .pull-right[
 .discussion[
-What if we wanted to select these columns, and then arrange the data in descending order of lead time?
+E se quiséssemos selecionar essas colunas e, em seguida, organizar os dados na ordem decrescente do tempo de espera?
 ]
 ]
 
 ---
 
-## Data wrangling, step-by-step
+## Data wrangling, passo a passo
 
 .pull-left[
-Select:
+Selecionar:
 ```{r}
 hotels %>%
   select(hotel, lead_time)
@@ -292,7 +286,7 @@ hotels %>%
 
 --
 .pull-right[
-Select, then arrange:
+Selecione e organize:
 ```{r}
 hotels %>%
   select(hotel, lead_time) %>%
@@ -304,18 +298,18 @@ hotels %>%
 
 class: middle
 
-# Pipes
+# Pipes %>% 
 
 ---
 
-## What is a pipe?
+## O que é um pipe?
 
-In programming, a pipe is a technique for passing information from one process to another.
+Na programação, um _pipe_ é uma técnica para passar informações de um processo para outro.
 
 --
 
 .pull-left[
-- Start with the data frame `hotels`, and pass it to the `select()` function,
+- Comece com o data frame `hotels`, e passe-o para a função `select()`,
 ]
 .pull-right[
 .small[
@@ -329,13 +323,14 @@ hotels %>% #<<
 
 ---
 
-## What is a pipe?
+## O que é um pipe?
 
-In programming, a pipe is a technique for passing information from one process to another.
+Na programação, um _pipe_ é uma técnica para passar informações de um processo para outro.
+
 
 .pull-left[
-- Start with the data frame `hotels`, and pass it to the `select()` function,
-- then we select the variables `hotel` and `lead_time`,
+- Comece com o data frame `hotels`, e passe-o para a função `select()`,
+- então selecionamos as variáveis `hotel` e `lead_time`,
 ]
 .pull-right[
 .small[
@@ -349,14 +344,15 @@ hotels %>%
 
 ---
 
-## What is a pipe?
+## O que é um pipe?
 
-In programming, a pipe is a technique for passing information from one process to another.
+Na programação, um _pipe_ é uma técnica para passar informações de um processo para outro.
+
 
 .pull-left[
-- Start with the data frame `hotels`, and pass it to the `select()` function,
-- then we select the variables `hotel` and `lead_time`,
-- and then we arrange the data frame by `lead_time` in descending order.
+- Comece com o data frame `hotels`, e passe-o para a função `select()`,
+- então selecionamos as variáveis `hotel` e `lead_time`,
+- e, em seguida, organizamos o data frame por `lead_time` em ordem descendente.
 ]
 .pull-right[
 .small[
@@ -370,17 +366,24 @@ hotels %>%
 
 ---
 
-## Aside
+## Pipes %>%
 
-The pipe operator is implemented in the package **magrittr**, though we don't need to load this package explicitly since **tidyverse** does this for us.
+O operador de _pipe_ é implementado pelo pacote **magrittr**, embora não precisemos carregar este pacote explicitamente, uma vez que o pacote **tidyverse** faz isso por nós.
 
 --
 
 .discussion[
-Any guesses as to why the package is called magrittr?
+Algum palpite sobre por que o pacote se chama magrittr?
 ]
 
---
+---
+
+## Pipes %>%
+
+.discussion[
+_ há uma famosa obra do pintor belga René Magritte em que se vê um cachimbo e, sob este, a inscrição "ceci n'est pas une pipe" (isto não é um cachimbo)_
+]
+
 
 .pull-left[
 ```{r magritte, echo=FALSE, out.width="100%", fig.align = "center", caption = "Magritte's pipe"}
@@ -395,20 +398,18 @@ knitr::include_graphics("img/magrittr.jpg")
 
 ---
 
-## How does a pipe work?
+## Como funciona um pipe?
 
-- You can think about the following sequence of actions - find key, 
-unlock car, start car, drive to work, park.
+- Você pode pensar sobre a seguinte sequência de ações - encontrar chave, desbloquear carro, ligar carro, dirigir para o trabalho, estacionar.
 
 --
-- Expressed as a set of nested functions in R pseudocode this would look like:
+- Expressa como um conjunto de funções aninhadas em pseudocódigo R isso se pareceria com:
 ```{r eval=FALSE}
 park(drive(start_car(find("keys")), to = "work"))
 ```
 
 --
-- Writing it out using pipes give it a more natural (and easier to read) 
-structure:
+- Escrevê-lo usando _pipes_ dá-lhe uma estrutura mais natural (e mais fácil de ler):
 ```{r eval=FALSE}
 find("keys") %>%
   start_car() %>%
@@ -418,12 +419,12 @@ find("keys") %>%
 
 ---
 
-## What about other arguments?
+## E outros argumentos?
 
-Use the dot to
+Use o ponto para
 
-- send results to a function argument other than first one or 
-- use the previous result for multiple arguments
+- enviar resultados para um argumento de função diferente do primeiro ou 
+- usar o resultado anterior para vários argumentos
 
 ```{r fig.height=1.8, fig.width = 3.75}
 hotels %>%
@@ -433,12 +434,12 @@ hotels %>%
 
 ---
 
-## A note on piping and layering
+## Uma nota sobre _pipe_ e camadas
 
-- The `%>%` operator in **dplyr** functions is called the pipe operator. This means you "pipe" the output of the previous line of code as the first input of the next line of code.
+- O operador `%>%` em funções do pacote **dplyr** é chamado de operador de tubulação _(pipe)_. Isso significa que você "canaliza" a saída da linha anterior de código como a primeira entrada da próxima linha de código.
 
 --
-- The `+` operator in **ggplot2** functions is used for "layering". This means you create the plot in layers, separated by `+`.
+- O operador `+` em funções do pacote **ggplot2** é usado para adicionar as "camadas". Isso significa que você cria o plot em camadas, separado por `+`.
 
 ---
 
@@ -488,12 +489,12 @@ ggplot(hotels, aes(x = hotel, fill = deposit_type)) +
 
 ---
 
-## Code styling
+## Estilo de código
 
-Many of the styling principles are consistent across `%>%` and `+`:
+Muitos dos princípios de estilo são consistentes em toda a forma `%>%` e `+`:
 
-- always a space before
-- always a line break after (for pipelines with more than 2 lines)
+- sempre um espaço antes
+- sempre uma quebra de linha depois (para _pipeline_ com mais de 2 linhas)
 
 `r emo::ji("x")`
 
@@ -512,21 +513,21 @@ ggplot(hotels, aes(x = hotel, y = deposit_type)) +
 
 class: middle
 
-# Working with a single data frame
+# Trabalhando com um único _data frame_
 
 ---
 
 class: middle
 
-.hand[You...]
+.hand[Você...]
 
-.huge-blue[have] .hand[a single data frame]
+.huge-blue[Tem] .hand[um único _data frame_]
 
-.huge-pink[want] .hand[to slice it, and dice it, and juice it, and process it]
+.huge-pink[Quer] .hand[corta-lo, dividi-lo, espreme-lo, e processa-lo]
 
 ---
 
-## `select` to keep variables
+## Usar `select` para manter variáveis
 
 ```{r}
 hotels %>%
@@ -535,7 +536,7 @@ hotels %>%
 
 ---
 
-## `select` to exclude variables
+## Usar`select` para excluir variáveis
 
 .small[
 ```{r}
@@ -546,7 +547,7 @@ hotels %>%
 
 ---
 
-## `select` a range of variables
+## Usar `select` para um intervalo/conjunto de variáveis
 
 ```{r}
 hotels %>%
@@ -555,7 +556,7 @@ hotels %>%
 
 ---
 
-## `select` variables with certain characteristics
+## `select` para variáveis com certas características
 
 ```{r}
 hotels %>%
@@ -564,7 +565,7 @@ hotels %>%
 
 ---
 
-## `select` variables with certain characteristics
+## `select` para variáveis com certas características
 
 ```{r}
 hotels %>%
@@ -573,24 +574,24 @@ hotels %>%
 
 ---
 
-## Select helpers
+## Select - algumas ajudas
 
-- `starts_with()`: Starts with a prefix
-- `ends_with()`: Ends with a suffix
-- `contains()`: Contains a literal string
-- `num_range()`: Matches a numerical range like x01, x02, x03
-- `one_of()`: Matches variable names in a character vector
-- `everything()`: Matches all variables
-- `last_col()`: Select last variable, possibly with an offset
-- `matches()`: Matches a regular expression (a sequence of symbols/characters expressing a string/pattern to be searched for within text)
+- `starts_with()`: Começa com um prefixo
+- `ends_with()`: Termina com um sufixo
+- `contains()`: Contém uma sequência literal (strings)
+- `num_range()`:  Corresponde a uma faixa numérica como x01, x02, x03
+- `one_of()`: Corresponde a nomes de variáveis em um vetor de caracteres
+- `everything()`: Corresponde a todas as variáveis
+- `last_col()`: Selecione a última variável, possivelmente com um deslocamento
+- `matches()`: Corresponde a uma expressão regular (uma sequência de símbolos/caracteres expressando uma string/padrão a ser pesquisado dentro do texto)
 
 .footnote[
-See help for any of these functions for more info, e.g. `?everything`.
+Consulte ajuda para qualquer uma dessas funções para obter mais informações, por exemplo. `?everything`.
 ]
 
 ---
 
-## `arrange` in ascending / descending order
+## Use `arrange` para ordenar entre ascendente/descendente
 
 .pull-left[
 ```{r}
@@ -609,7 +610,7 @@ hotels %>%
 
 ---
 
-## `slice` for certain row numbers
+## Use `slice` para recortar linhas
 
 .midi[
 ```{r}
@@ -660,7 +661,7 @@ hotels %>%
 # bookings in City Hotels
 hotels %>%
   filter(hotel == "City Hotel") #<<
-````
+```
 ]
 
 ---

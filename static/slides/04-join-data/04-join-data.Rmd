@@ -1,5 +1,5 @@
 ---
-title: "Joining data from multiple sources <br> `r emo::ji('handshake')`"
+title: "A junção de dados de várias fontes <br> `r emo::ji('handshake')`"
 author: ""
 output:
   xaringan::moon_reader:
@@ -30,24 +30,23 @@ library(scales)
 
 class: middle
 
-# Working with multiple data frames
+# Trabalhando com vários data frames
 
 ---
 
 class: middle
 
-.hand[You...]
+.hand[Você...]
 
-.huge-blue[have] .hand[multiple data frames]
+.huge-blue[Têm] .hand[vários data frames]
 
-.huge-pink[want] .hand[to slice it, and dice it, and juice it, and process it]
+.huge-pink[Quer] .hand[fatia-lo, corta-lo, espreme-lo, e processa-lo]
 
 ---
 
-## Fisheries of the world
+## Pesca do mundo
 
-Fisheries and Aquaculture Department of the Food and Agriculture Organization of 
-the United Nations collects data on fisheries production of countries.
+O Departamento de Pesca e Aquicultura da Organização das Nações Unidas para a Alimentação e a Agricultura coleta dados sobre a produção pesqueira dos países.
 
 ```{r echo=FALSE, out.width="60%", fig.align="center"}
 include_graphics("img/fisheries-data.png")
@@ -62,7 +61,7 @@ include_graphics("img/fisheries-data.png")
 
 ---
 
-## Load data
+## Carregar dados
 
 ```{r}
 fisheries <- read_csv("data/fisheries.csv")
@@ -70,7 +69,7 @@ fisheries <- read_csv("data/fisheries.csv")
 
 ---
 
-## First peek at the data
+## Primeira olhada nos dados
 
 .xsmall[
 ```{r render = normal_print, echo=2}
@@ -81,7 +80,7 @@ skim(fisheries)
 
 ---
 
-## Some summary stats
+## Resumindo algumas estatísticas
 
 ```{r}
 fisheries %>%
@@ -97,12 +96,12 @@ fisheries %>%
 <br>
 
 .hand[
-well, that was boring...
+bem, isso foi chato...
 ]
 
 ---
 
-## A new approach!
+## Uma nova abordagem!
 
 ```{r}
 fisheries %>%
@@ -111,7 +110,7 @@ fisheries %>%
 
 --
 
-.hand[and once we learn more about data types...]
+.hand[e uma vez que aprendemos mais sobre tipos de dados...]
 
 ```{r}
 fisheries %>%
@@ -121,10 +120,7 @@ fisheries %>%
 ---
 
 .discussion[
-The (not-so-great) visualization below shows the distribution of fishery harvest 
-of countries for 2016, by capture and aquaculture. What are some ways you would 
-improve this visualization? Note that countries whose total harvest was less 
-than 100,000 tons are not included in the visualization.
+A visualização (não tão grande) abaixo mostra a distribuição da colheita da pesca dos países para 2016, por captura e aquicultura. Quais são as maneiras de melhorar essa visualização? Note-se que países cuja colheita total foi inferior a 100.000 toneladas não estão incluídos na visualização.
 ]
 
 ```{r echo=FALSE, out.width="60%", fig.align="center"}
@@ -133,25 +129,24 @@ include_graphics("img/fisheries.png")
 
 --
 
-- Calculate summary statistics at the continent level and visualize them.
-- Map the data.
+- Calcule as estatísticas resumidas no nível do continente e visualize-as.
+- Mapeie os dados.
 
 ---
 
-.huge-pink[goal:] 
+.huge-pink[objetivo:] 
 
-.hand-blue[calculate summary statistics at the continent level and visualize them]
+.hand-blue[calcular estatísticas resumidas no nível do continente e visualizá-las]
 
 ---
 
-## Data prep
+## Preparação de dados
 
 ```{r message=FALSE}
 continents <- read_csv("data/continents.csv")
 ```
 
-Filter out countries whose total harvest was less than 100,000 tons since they 
-are not included in the visualization:
+Filtrar países cuja colheita total foi inferior a 100.000 toneladas, uma vez que não estão incluídos na visualização:
 
 ```{r}
 fisheries <- fisheries %>%
@@ -164,7 +159,7 @@ fisheries
 
 class: middle
 
-# Data joins
+# Junção dos dados
 
 ---
 
@@ -181,26 +176,25 @@ continents
 
 ---
 
-## Joining data frames
+## Juntando data frames
 
 ```
 something_join(x, y)
 ```
 
-- `inner_join()`: all rows from x where there are matching values in y, return 
-all combination of multiple matches in the case of multiple matches
-- `left_join()`: all rows from x
-- `right_join()`: all rows from y
-- `full_join()`: all rows from both x and y
-- `semi_join()`: all rows from x where there are matching values in y, keeping just columns from x.
-- `anti_join()`: return all rows from x where there are not matching values in y, never duplicate rows of x
+- `inner_join()`: todas as linhas de x onde há valores correspondentes em y, retornem toda a combinação de várias combinações no caso de houver várias linhas correspondentes
+- `left_join()`: todas as linhas de x
+- `right_join()`: todas as linhas de y
+- `full_join()`: todas as linhas de x e y
+- `semi_join()`: todas as linhas de x onde há valores correspondentes em y, mantendo apenas colunas de x.
+- `anti_join()`: retornar todas as linhas de x onde não há valores correspondentes em y, nunca duplica linhas de x
 - ...
  
 ---
 
 ## Setup
 
-For the next few slides...
+Para os próximos slides...
 
 .pull-left[
 ```{r echo=FALSE}
@@ -312,8 +306,7 @@ include_graphics("img/anti-join.gif")
 ---
 
 .discussion[
-We want to keep all rows and columns from `fisheries` and add a column for 
-corresponding continents. Which join function should we use?
+Queremos manter todas as linhas e colunas de `fisheries` e adicionar uma coluna para continentes correspondentes. Qual função de adesão devemos usar?
 ]
 
 .pull-left[
@@ -329,7 +322,7 @@ continents
 
 ---
 
-## Join fisheries and continents 
+## Junte pescas e continentes 
 
 ```{r}
 fisheries <- left_join(fisheries, continents) 
@@ -338,18 +331,18 @@ fisheries <- left_join(fisheries, continents)
 --
 
 .discussion[
-How does `left_join()` know to join the two data frames by `country`?
+Como `left_join()` saberá juntar os dois data frames por `country`?
 ]
 
 Hint:
 
-- Variables in the original fisheries dataset:
+- Variáveis no conjunto de dados da pesca original:
 
 ```{r echo=FALSE}
 fisheries %>% select(-continent) %>% names()
 ```
 
-- Variables in the continents dataset:
+- Variáveis no conjunto de dados dos continentes:
 
 ```{r echo=FALSE}
 names(continents)
@@ -358,7 +351,7 @@ names(continents)
 
 ---
 
-## Check the data
+## Verifique os dados
 
 ```{r}
 fisheries %>%
@@ -367,7 +360,7 @@ fisheries %>%
 
 ---
 
-## Implement fixes
+## Implementar correções
 
 ```{r}
 fisheries <- fisheries %>%
@@ -380,7 +373,7 @@ fisheries <- fisheries %>%
   )
 ```
 
-...and check again
+... e verificar novamente
 
 ```{r include=FALSE}
 options(width=90)
@@ -395,7 +388,7 @@ fisheries %>%
 ---
 
 .discussion[
-What does the following code do?
+O que faz o seguinte código?
 ]
 
 ```{r eval=FALSE}
@@ -403,27 +396,6 @@ fisheries %>%
   mutate(aquaculture_perc = aquaculture / total)
 ```
 
----
-
-.your-turn[
-- [RStudio Cloud](http://rstd.io/dsbox-cloud) > `AE 05 - Fisheries + Data joins` > open `fisheries.Rmd` and knit.
-- Knit the document and work on the Exercise 1.
-]
-
-```{r echo=FALSE}
-countdown(minutes = 5)
-```
-
----
-
-.your-turn[
-- [RStudio Cloud](http://rstd.io/dsbox-cloud) > `AE 05 - Fisheries + Data joins` > open `fisheries.Rmd` and knit.
-- Knit the document and work on the Exercises 2 - 4.
-]
-
-```{r echo=FALSE}
-countdown(minutes = 15)
-```
 
 ---
 
@@ -440,7 +412,7 @@ fisheries_summary_continent <- fisheries %>%
   )
 ```
 
-## Visualize continent summary stats
+## Visualize estatísticas de resumo do continente
 
 ```{r out.width="80%"}
 ggplot(fisheries_summary_continent, aes(x = continent, y = mean_ap)) +
@@ -449,7 +421,7 @@ ggplot(fisheries_summary_continent, aes(x = continent, y = mean_ap)) +
 
 ---
 
-## Improve visualization
+## Melhorar a visualização
 
 ```{r out.width="80%"}
 ggplot(fisheries_summary_continent, 
@@ -459,7 +431,7 @@ ggplot(fisheries_summary_continent,
 
 ---
 
-## Improve visualization further
+## Melhore ainda mais a visualização
 
 ```{r eval=FALSE}
 ggplot(fisheries_summary_continent, 
@@ -476,7 +448,7 @@ ggplot(fisheries_summary_continent,
   theme_minimal() #<<
 ```
 
-$\rightarrow$ See next slide...
+$\rightarrow$ Veja o próximo slide...
 
 ---
 
@@ -497,24 +469,23 @@ ggplot(fisheries_summary_continent,
 ---
 
 
-.huge-pink[goal:] 
+.huge-pink[objetivo:] 
 
-.hand-blue[map fishery data at the country level]
+.hand-blue[mapear dados de pesca no nível do país]
 
 ---
 
-## Mapping the fisheries data
+## Mapeando os dados da pesca
 
-- Obtain country boundaries and store as a data frame
-- Join the fisheries and country boundaries data frames
-- Plot the country boundaries, and fill by fisheries harvest data
+- Obtenha limites do país e armazene como um data frame
+- Junte os data frames _fisheries_ e _country boundaries_
+- Plot os dados de _country boundaries_, e preencha por dados de _fisheries harvest_ (colheita da pesca).
 
 ---
 
 ## `map_data()`
 
-The `map_data()` function turns data from the **maps** package into a data frame 
-suitable for plotting with ggplot2:
+A função `map_data()` transforma os dados do pacote **maps** em um data frame, que seja adequado para criar o plot com o pacote ggplot2:
 
 ```{r eval=FALSE}
 map_data("world")
@@ -526,7 +497,7 @@ map_data("world")[1:14,]
 
 ---
 
-## Connect the dots
+## Conecte os pontos
 
 ```{r echo=FALSE, out.width="50%", fig.align="center"}
 include_graphics("img/connect-the-dots-australia.png")
@@ -534,10 +505,10 @@ include_graphics("img/connect-the-dots-australia.png")
 
 ---
 
-## A few fixes for better matching
+## Algumas correções para uma melhor correspondência
 
 .discussion[
-What does the following code do?
+O que faz o seguinte código?
 ]
 
 ```{r}
@@ -553,7 +524,7 @@ world_map <- map_data("world") %>%
 
 ---
 
-## Map the world
+## Mapa do mundo
 
 .midi[
 ```{r out.width="80%"}
@@ -566,7 +537,7 @@ ggplot(world_map, aes(x = long, y = lat, group = group)) +
 
 ---
 
-## Join fisheries and world map
+## Juntar dados: _fisheries_ e _world map_
 
 .pull-left[
 ```{r}
@@ -581,7 +552,7 @@ world_map %>% select(region)
 
 ---
 
-## Join fisheries and world map
+## Juntar dados: _fisheries_ e _world map_
 
 ```{r}
 fisheries_map <- left_join(fisheries, world_map, 
@@ -594,7 +565,7 @@ glimpse(fisheries_map)
 
 ---
 
-## Mapping fisheries
+## Mapeando os dados de _fisheries_
 
 .midi[
 ```{r out.width="80%"}
@@ -608,7 +579,7 @@ ggplot(fisheries_map, mapping = aes(x = long, y = lat, group = group)) +
 ---
 
 .discussion[
-What is misleading about the following map?
+O que é enganoso sobre o seguinte mapa?
 ]
 
 ```{r echo=FALSE, out.width="80%"}
@@ -620,7 +591,7 @@ ggplot(fisheries_map, mapping = aes(x = long, y = lat, group = group)) +
 
 ---
 
-## Putting it altogether
+## Colocando tudo junto
 
 ```{r eval=FALSE}
 ggplot() +
@@ -666,7 +637,7 @@ ggplot() +
 
 ---
 
-## Log scale
+## Escala de log
 
 ```{r eval=FALSE}
 ggplot() +
@@ -706,7 +677,7 @@ ggplot() +
 
 ---
 
-## Aquaculture
+## Aquicultura
 
 ```{r eval=FALSE}
 ggplot() +
@@ -771,4 +742,27 @@ ggplot() +
     caption = "Source: bit.ly/2VrawTt",
     fill = "Aquaculture %"
   )
+```
+
+
+---
+
+.your-turn[
+- [RStudio Cloud](http://rstd.io/dsbox-cloud) > `AE 05 - Fisheries + Data joins` > Abra `fisheries.Rmd` e _knit_.
+- _Knit_ o documento e trabalhe no Exercício 1.
+]
+
+```{r echo=FALSE}
+countdown(minutes = 5)
+```
+
+---
+
+.your-turn[
+- [RStudio Cloud](http://rstd.io/dsbox-cloud) > `AE 05 - Fisheries + Data joins` > Abra `fisheries.Rmd` e _knit_.
+- _Knit_ o documento e trabalhe nos Exercícios 2 -4.
+]
+
+```{r echo=FALSE}
+countdown(minutes = 15)
 ```
