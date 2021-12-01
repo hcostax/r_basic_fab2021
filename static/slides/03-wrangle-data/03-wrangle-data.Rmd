@@ -623,11 +623,8 @@ hotels %>%
 ---
 
 .tip[
-In R, you can use the `#` (hashtag or pound sign, depending on your age 
-`r emo::ji("stuck_out_tongue_winking_eye")`) for adding comments to your code. 
-Any text following `#` will be printed as is, and won't be run as R code.
-This is useful for leaving comments in your code and for temporarily disabling 
-certain lines of code while debugging.
+Em R, você pode usar o `#` (sinal de hashtag ou pound, dependendo da sua idade 
+`r emo::ji("stuck_out_tongue_winking_eye")`) para adicionar comentários ao seu código. Qualquer texto seguido de `#` será impresso como está, e não será executado como código R. Isso é útil para deixar comentários em seu código e para desativar temporariamente certas linhas de código durante a depuração.
 ]
 
 .small[
@@ -641,7 +638,7 @@ hotels %>%
 
 ---
 
-## `slice` for certain row numbers
+## Use `slice` para certas linhas
 
 .midi[
 ```{r}
@@ -654,7 +651,7 @@ hotels %>%
 
 ---
 
-## `filter` to select a subset of rows
+## Use `filter` para selecionar um subconjunto de linhas
 
 .midi[
 ```{r}
@@ -666,7 +663,7 @@ hotels %>%
 
 ---
 
-## `filter` for many conditions at once
+## `filter` para muitas condições ao mesmo tempo
 
 ```{r}
 hotels %>%
@@ -679,7 +676,7 @@ hotels %>%
 
 ---
 
-## `filter` for more complex conditions
+## `filter` para condições mais complexas
 
 ```{r}
 # bookings with no adults and some children or babies in the room
@@ -693,7 +690,7 @@ hotels %>%
 
 ---
 
-## Logical operators in R
+## Operadores lógicos em R
 
 <br>
 
@@ -711,10 +708,10 @@ operator    | definition                   || operator     | definition
 
 .your-turn[
 
-Time to actually play around with the Star Wars dataset!
+Hora de realmente brincar com o conjunto de dados de Star Wars!
 
-- Go to RStudio Cloud ([rstd.io/dsbox-cloud](http://rstd.io/dsbox-cloud)) and start `AE 04 - Hotels + Data wrangling`.
-- Open the R Markdown document and complete Exercises 1 - 4.
+- Vá para RStudio Cloud ([rstd.io/dsbox-cloud](http://rstd.io/dsbox-cloud)) e inicie o projeto `AE 04 - Hotels + Data wrangling`.
+- Abra o documento R Markdown e complete exercícios 1 - 4.
 ]
 
 ```{r echo=FALSE}
@@ -728,9 +725,9 @@ options(dplyr.print_max = 20)
 ```
 
 
-## `distinct` to filter for unique rows
+## `distinct` filtro para linhas únicas
 
-... and `arrange` to order alphabetically
+... e `arrange` para ordenar alfabeticamente
 
 .small[
 .pull-left[
@@ -751,7 +748,7 @@ hotels %>%
 
 ---
 
-## `count` to create frequency tables
+## `count` para criar tabelas de frequência
 
 .pull-left[
 ```{r}
@@ -771,7 +768,7 @@ hotels %>%
 
 ---
 
-## `count` and `arrange`
+## `count` e `arrange`
 
 .pull-left[
 ```{r}
@@ -793,7 +790,7 @@ hotels %>%
 
 ---
 
-## `count` for multiple variables
+## `count` para múltiplas variáveis
 
 ```{r}
 hotels %>%
@@ -802,7 +799,7 @@ hotels %>%
 
 ---
 
-## order matters when you `count`
+## ordem importa quando você usa `count`
 
 .midi[
 .pull-left[
@@ -825,10 +822,10 @@ hotels %>%
 
 .your-turn[
 
-Time to actually play around with the Star Wars dataset!
+Hora de realmente brincar com o conjunto de dados de Star Wars!
 
-- Go to RStudio Cloud ([rstd.io/dsbox-cloud](http://rstd.io/dsbox-cloud)) and start `AE 04 - Hotels + Data wrangling`.
-- Open the R Markdown document and complete Exercises 5 and 6.
+- Vá para RStudio Cloud ([rstd.io/dsbox-cloud](http://rstd.io/dsbox-cloud)) e inicie o projeto `AE 04 - Hotels + Data wrangling`.
+- Abra o documento R Markdown e complete os exercícios 5 e 6.
 ]
 
 ```{r echo=FALSE}
@@ -837,7 +834,7 @@ countdown(minutes = 10)
 
 ---
 
-## `mutate` to add a new variable
+## `mutate` para adicionar uma nova variável
 
 ```{r}
 hotels %>%
@@ -850,7 +847,7 @@ hotels %>%
 
 
 
-## Little ones in resort and city hotels
+## Pequenos em resorts e hotéis da cidade
 
 .midi[
 .pull-left[
@@ -882,7 +879,7 @@ hotels %>%
 ---
 
 .discussion[
-What is happening in the following chunk?
+O que está acontecendo no seguinte _chunk_ (trecho)?
 ]
 
 .midi[
@@ -896,7 +893,7 @@ hotels %>%
 
 ---
 
-# `summarise` for summary stats
+# `summarise` para resumos estatísticos
 
 ```{r}
 # mean average daily rate for all bookings
@@ -909,15 +906,13 @@ hotels %>%
 <br>
 
 .tip[
-`summarise()` changes the data frame entirely, it collapses rows down to a single 
-summary statistics, and removes all columns that are irrelevant to the calculation.
+`summarise()` altera totalmente o quadro de dados, ele colapsa linhas até uma única estatística sumária e remove todas as colunas que são irrelevantes para o cálculo.
 ]
 
 ---
 
 .tip[
-`summarise()` also lets you get away with being sloppy and not naming your new 
-column, but that's not recommended!
+`summarise()` também permite que você se safe de ser desleixado e não nomear sua nova coluna, mas isso não é recomendado!
 ]
 
 .midi[
@@ -938,7 +933,7 @@ hotels %>%
 
 ---
 
-# `group_by` for grouped operations
+# `group_by` para operações agrupadas
 
 ```{r}
 # mean average daily rate for all booking at city and resort hotels
@@ -949,9 +944,9 @@ hotels %>%
 
 ---
 
-## Calculating frequencies
+## Calculando frequências por grupos
 
-The following two give the same result, so `count` is simply short for `group_by` then determine frequencies 
+Os dois seguintes dão o mesmo resultado, por isso `count` é simplesmente curto para `group_by` então determinar frequências 
 
 .pull-left[
 ```{r}
@@ -969,9 +964,9 @@ hotels %>%
 
 ---
 
-# Multiple summary statistics
+# Múltiplos resumos estatísticos
 
-`summarise` can be used for multiple summary statistics as well
+`summarise` pode ser usado para múltiplos resumos estatísticos, bem como
 
 ```{r}
 hotels %>%
@@ -987,9 +982,8 @@ hotels %>%
 
 .your-turn[
 
-- Go to RStudio Cloud ([rstd.io/dsbox-cloud](http://rstd.io/dsbox-cloud)) and start `AE 04 - Hotels + Data wrangling`.
-- Open the R Markdown document and complete Exercises 7 and 8.
-- Once done, place a green sticky on your laptop. If you have questions, place a pink sticky.
+- Vá para RStudio Cloud ([rstd.io/dsbox-cloud](http://rstd.io/dsbox-cloud)) e inicie o projeto `AE 04 - Hotels + Data wrangling`.
+- Abra o documento R Markdown e complete os Exercícios 7 e 8.
 ]
 
 ```{r echo=FALSE}

@@ -584,7 +584,6 @@ Algum palpite sobre por que o pacote se chama magrittr?
 _ há uma famosa obra do pintor belga René Magritte em que se vê um cachimbo e, sob este, a inscrição "ceci n'est pas une pipe" (isto não é um cachimbo)_
 ]
 
---
 
 .pull-left[
 &lt;img src="img/magritte.jpg" width="100%" style="display: block; margin: auto;" /&gt;
@@ -595,21 +594,19 @@ _ há uma famosa obra do pintor belga René Magritte em que se vê um cachimbo e
 
 ---
 
-## How does a pipe work?
+## Como funciona um pipe?
 
-- You can think about the following sequence of actions - find key, 
-unlock car, start car, drive to work, park.
+- Você pode pensar sobre a seguinte sequência de ações - encontrar chave, desbloquear carro, ligar carro, dirigir para o trabalho, estacionar.
 
 --
-- Expressed as a set of nested functions in R pseudocode this would look like:
+- Expressa como um conjunto de funções aninhadas em pseudocódigo R isso se pareceria com:
 
 ```r
 park(drive(start_car(find("keys")), to = "work"))
 ```
 
 --
-- Writing it out using pipes give it a more natural (and easier to read) 
-structure:
+- Escrevê-lo usando _pipes_ dá-lhe uma estrutura mais natural (e mais fácil de ler):
 
 ```r
 find("keys") %&gt;%
@@ -620,12 +617,12 @@ find("keys") %&gt;%
 
 ---
 
-## What about other arguments?
+## E outros argumentos?
 
-Use the dot to
+Use o ponto para
 
-- send results to a function argument other than first one or 
-- use the previous result for multiple arguments
+- enviar resultados para um argumento de função diferente do primeiro ou 
+- usar o resultado anterior para vários argumentos
 
 
 ```r
@@ -646,12 +643,12 @@ hotels %&gt;%
 
 ---
 
-## A note on piping and layering
+## Uma nota sobre _pipe_ e camadas
 
-- The `%&gt;%` operator in **dplyr** functions is called the pipe operator. This means you "pipe" the output of the previous line of code as the first input of the next line of code.
+- O operador `%&gt;%` em funções do pacote **dplyr** é chamado de operador de tubulação _(pipe)_. Isso significa que você "canaliza" a saída da linha anterior de código como a primeira entrada da próxima linha de código.
 
 --
-- The `+` operator in **ggplot2** functions is used for "layering". This means you create the plot in layers, separated by `+`.
+- O operador `+` em funções do pacote **ggplot2** é usado para adicionar as "camadas". Isso significa que você cria o plot em camadas, separado por `+`.
 
 ---
 
@@ -724,12 +721,12 @@ ggplot(hotels, aes(x = hotel, fill = deposit_type)) +
 
 ---
 
-## Code styling
+## Estilo de código
 
-Many of the styling principles are consistent across `%&gt;%` and `+`:
+Muitos dos princípios de estilo são consistentes em toda a forma `%&gt;%` e `+`:
 
-- always a space before
-- always a line break after (for pipelines with more than 2 lines)
+- sempre um espaço antes
+- sempre uma quebra de linha depois (para _pipeline_ com mais de 2 linhas)
 
 ❌
 
@@ -750,21 +747,21 @@ ggplot(hotels, aes(x = hotel, y = deposit_type)) +
 
 class: middle
 
-# Working with a single data frame
+# Trabalhando com um único _data frame_
 
 ---
 
 class: middle
 
-.hand[You...]
+.hand[Você...]
 
-.huge-blue[have] .hand[a single data frame]
+.huge-blue[Tem] .hand[um único _data frame_]
 
-.huge-pink[want] .hand[to slice it, and dice it, and juice it, and process it]
+.huge-pink[Quer] .hand[corta-lo, dividi-lo, espreme-lo, e processa-lo]
 
 ---
 
-## `select` to keep variables
+## Usar `select` para manter variáveis
 
 
 ```r
@@ -787,7 +784,7 @@ hotels %&gt;%
 
 ---
 
-## `select` to exclude variables
+## Usar`select` para excluir variáveis
 
 .small[
 
@@ -818,7 +815,7 @@ hotels %&gt;%
 
 ---
 
-## `select` a range of variables
+## Usar `select` para um intervalo/conjunto de variáveis
 
 
 ```r
@@ -841,7 +838,7 @@ hotels %&gt;%
 
 ---
 
-## `select` variables with certain characteristics
+## `select` para variáveis com certas características
 
 
 ```r
@@ -864,7 +861,7 @@ hotels %&gt;%
 
 ---
 
-## `select` variables with certain characteristics
+## `select` para variáveis com certas características
 
 
 ```r
@@ -887,24 +884,24 @@ hotels %&gt;%
 
 ---
 
-## Select helpers
+## Select - algumas ajudas
 
-- `starts_with()`: Starts with a prefix
-- `ends_with()`: Ends with a suffix
-- `contains()`: Contains a literal string
-- `num_range()`: Matches a numerical range like x01, x02, x03
-- `one_of()`: Matches variable names in a character vector
-- `everything()`: Matches all variables
-- `last_col()`: Select last variable, possibly with an offset
-- `matches()`: Matches a regular expression (a sequence of symbols/characters expressing a string/pattern to be searched for within text)
+- `starts_with()`: Começa com um prefixo
+- `ends_with()`: Termina com um sufixo
+- `contains()`: Contém uma sequência literal (strings)
+- `num_range()`:  Corresponde a uma faixa numérica como x01, x02, x03
+- `one_of()`: Corresponde a nomes de variáveis em um vetor de caracteres
+- `everything()`: Corresponde a todas as variáveis
+- `last_col()`: Selecione a última variável, possivelmente com um deslocamento
+- `matches()`: Corresponde a uma expressão regular (uma sequência de símbolos/caracteres expressando uma string/padrão a ser pesquisado dentro do texto)
 
 .footnote[
-See help for any of these functions for more info, e.g. `?everything`.
+Consulte ajuda para qualquer uma dessas funções para obter mais informações, por exemplo. `?everything`.
 ]
 
 ---
 
-## `arrange` in ascending / descending order
+## Use `arrange` para ordenar entre ascendente/descendente
 
 .pull-left[
 
@@ -951,7 +948,7 @@ hotels %&gt;%
 
 ---
 
-## `slice` for certain row numbers
+## Use `slice` para recortar linhas
 
 .midi[
 
@@ -983,11 +980,8 @@ hotels %&gt;%
 ---
 
 .tip[
-In R, you can use the `#` (hashtag or pound sign, depending on your age 
-😜) for adding comments to your code. 
-Any text following `#` will be printed as is, and won't be run as R code.
-This is useful for leaving comments in your code and for temporarily disabling 
-certain lines of code while debugging.
+Em R, você pode usar o `#` (sinal de hashtag ou pound, dependendo da sua idade 
+😜) para adicionar comentários ao seu código. Qualquer texto seguido de `#` será impresso como está, e não será executado como código R. Isso é útil para deixar comentários em seu código e para desativar temporariamente certas linhas de código durante a depuração.
 ]
 
 .small[
@@ -1020,7 +1014,7 @@ hotels %&gt;%
 
 ---
 
-## `slice` for certain row numbers
+## Use `slice` para certas linhas
 
 .midi[
 
@@ -1052,7 +1046,7 @@ hotels %&gt;%
 
 ---
 
-## `filter` to select a subset of rows
+## Use `filter` para selecionar um subconjunto de linhas
 
 .midi[
 
@@ -1084,7 +1078,7 @@ hotels %&gt;%
 
 ---
 
-## `filter` for many conditions at once
+## `filter` para muitas condições ao mesmo tempo
 
 
 ```r
@@ -1111,7 +1105,7 @@ hotels %&gt;%
 
 ---
 
-## `filter` for more complex conditions
+## `filter` para condições mais complexas
 
 
 ```r
@@ -1139,7 +1133,7 @@ hotels %&gt;%
 
 ---
 
-## Logical operators in R
+## Operadores lógicos em R
 
 &lt;br&gt;
 
@@ -1157,13 +1151,13 @@ operator    | definition                   || operator     | definition
 
 .your-turn[
 
-Time to actually play around with the Star Wars dataset!
+Hora de realmente brincar com o conjunto de dados de Star Wars!
 
-- Go to RStudio Cloud ([rstd.io/dsbox-cloud](http://rstd.io/dsbox-cloud)) and start `AE 04 - Hotels + Data wrangling`.
-- Open the R Markdown document and complete Exercises 1 - 4.
+- Vá para RStudio Cloud ([rstd.io/dsbox-cloud](http://rstd.io/dsbox-cloud)) e inicie o projeto `AE 04 - Hotels + Data wrangling`.
+- Abra o documento R Markdown e complete exercícios 1 - 4.
 ]
 
-<div class="countdown" id="timer_61a227eb" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_61a74c1c" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">15</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -1172,9 +1166,9 @@ Time to actually play around with the Star Wars dataset!
 
 
 
-## `distinct` to filter for unique rows
+## `distinct` filtro para linhas únicas
 
-... and `arrange` to order alphabetically
+... e `arrange` para ordenar alfabeticamente
 
 .small[
 .pull-left[
@@ -1231,7 +1225,7 @@ hotels %&gt;%
 
 ---
 
-## `count` to create frequency tables
+## `count` para criar tabelas de frequência
 
 .pull-left[
 
@@ -1281,7 +1275,7 @@ hotels %&gt;%
 
 ---
 
-## `count` and `arrange`
+## `count` e `arrange`
 
 .pull-left[
 
@@ -1333,7 +1327,7 @@ hotels %&gt;%
 
 ---
 
-## `count` for multiple variables
+## `count` para múltiplas variáveis
 
 
 ```r
@@ -1363,7 +1357,7 @@ hotels %&gt;%
 
 ---
 
-## order matters when you `count`
+## ordem importa quando você usa `count`
 
 .midi[
 .pull-left[
@@ -1428,19 +1422,19 @@ hotels %&gt;%
 
 .your-turn[
 
-Time to actually play around with the Star Wars dataset!
+Hora de realmente brincar com o conjunto de dados de Star Wars!
 
-- Go to RStudio Cloud ([rstd.io/dsbox-cloud](http://rstd.io/dsbox-cloud)) and start `AE 04 - Hotels + Data wrangling`.
-- Open the R Markdown document and complete Exercises 5 and 6.
+- Vá para RStudio Cloud ([rstd.io/dsbox-cloud](http://rstd.io/dsbox-cloud)) e inicie o projeto `AE 04 - Hotels + Data wrangling`.
+- Abra o documento R Markdown e complete os exercícios 5 e 6.
 ]
 
-<div class="countdown" id="timer_61a22681" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_61a74b89" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
 ---
 
-## `mutate` to add a new variable
+## `mutate` para adicionar uma nova variável
 
 
 ```r
@@ -1467,7 +1461,7 @@ hotels %&gt;%
 
 
 
-## Little ones in resort and city hotels
+## Pequenos em resorts e hotéis da cidade
 
 .midi[
 .pull-left[
@@ -1527,7 +1521,7 @@ hotels %&gt;%
 ---
 
 .discussion[
-What is happening in the following chunk?
+O que está acontecendo no seguinte _chunk_ (trecho)?
 ]
 
 .midi[
@@ -1560,7 +1554,7 @@ hotels %&gt;%
 
 ---
 
-# `summarise` for summary stats
+# `summarise` para resumos estatísticos
 
 
 ```r
@@ -1581,15 +1575,13 @@ hotels %&gt;%
 &lt;br&gt;
 
 .tip[
-`summarise()` changes the data frame entirely, it collapses rows down to a single 
-summary statistics, and removes all columns that are irrelevant to the calculation.
+`summarise()` altera totalmente o quadro de dados, ele colapsa linhas até uma única estatística sumária e remove todas as colunas que são irrelevantes para o cálculo.
 ]
 
 ---
 
 .tip[
-`summarise()` also lets you get away with being sloppy and not naming your new 
-column, but that's not recommended!
+`summarise()` também permite que você se safe de ser desleixado e não nomear sua nova coluna, mas isso não é recomendado!
 ]
 
 .midi[
@@ -1626,7 +1618,7 @@ hotels %&gt;%
 
 ---
 
-# `group_by` for grouped operations
+# `group_by` para operações agrupadas
 
 
 ```r
@@ -1646,9 +1638,9 @@ hotels %&gt;%
 
 ---
 
-## Calculating frequencies
+## Calculando frequências por grupos
 
-The following two give the same result, so `count` is simply short for `group_by` then determine frequencies 
+Os dois seguintes dão o mesmo resultado, por isso `count` é simplesmente curto para `group_by` então determinar frequências 
 
 .pull-left[
 
@@ -1684,9 +1676,9 @@ hotels %&gt;%
 
 ---
 
-# Multiple summary statistics
+# Múltiplos resumos estatísticos
 
-`summarise` can be used for multiple summary statistics as well
+`summarise` pode ser usado para múltiplos resumos estatísticos, bem como
 
 
 ```r
@@ -1710,12 +1702,11 @@ hotels %&gt;%
 
 .your-turn[
 
-- Go to RStudio Cloud ([rstd.io/dsbox-cloud](http://rstd.io/dsbox-cloud)) and start `AE 04 - Hotels + Data wrangling`.
-- Open the R Markdown document and complete Exercises 7 and 8.
-- Once done, place a green sticky on your laptop. If you have questions, place a pink sticky.
+- Vá para RStudio Cloud ([rstd.io/dsbox-cloud](http://rstd.io/dsbox-cloud)) e inicie o projeto `AE 04 - Hotels + Data wrangling`.
+- Abra o documento R Markdown e complete os Exercícios 7 e 8.
 ]
 
-<div class="countdown" id="timer_61a225e3" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_61a74b7a" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
     </textarea>
